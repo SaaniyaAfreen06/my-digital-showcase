@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
   { to: "/", label: "Home" },
@@ -16,21 +16,20 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        <Link to="/" className="text-2xl font-display font-bold text-foreground">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <div className="max-w-6xl mx-auto flex items-center justify-between h-14 px-6">
+        <Link to="/" className="text-xl font-display font-bold text-foreground tracking-tight">
           Saaniya<span className="text-primary">.</span>
         </Link>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                pathname === l.to ? "text-primary" : "text-muted-foreground"
+                "text-sm font-medium transition-colors",
+                pathname === l.to ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
               )}
             >
               {l.label}
@@ -38,13 +37,11 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile toggle */}
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -60,8 +57,8 @@ const Navbar = () => {
                   to={l.to}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary",
-                    pathname === l.to ? "text-primary" : "text-muted-foreground"
+                    "text-sm font-medium transition-colors",
+                    pathname === l.to ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {l.label}
