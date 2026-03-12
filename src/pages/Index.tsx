@@ -70,11 +70,11 @@ const Index = () => {
               transition={{ duration: 0.4 }}
             >
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-2">
-                Selected Work
-              </p>
-              <h2 className="text-3xl font-display font-bold text-foreground">
-                Featured Projects
-              </h2>
+              Case Studies
+            </p>
+            <h2 className="text-3xl font-display font-bold text-foreground">
+              Featured Case Studies
+            </h2>
             </motion.div>
             <Link
               to="/work"
