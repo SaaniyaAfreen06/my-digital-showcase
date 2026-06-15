@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { projects, caseStudies } from "@/data/projects";
+import { useState } from "react";
 
 const WorkIndex = () => (
   <section className="max-w-6xl mx-auto px-6 py-20">
@@ -116,6 +117,60 @@ const WorkIndex = () => (
   </section>
 );
 
+const ProjectGallery = ({ project }: { project: NonNullable<(typeof projects[0] | typeof caseStudies[0]) | undefined> }) => {
+  const imgs = (project as any).images ?? [project!.image];
+  const [active, setActive] = useState(0);
+  return (
+    <div className="mb-12">
+      <div className="aspect-video bg-muted rounded-lg overflow-hidden border border-border relative group">
+        <img
+          src={imgs[active]}
+          alt={project!.title}
+          className="w-full h-full object-cover object-top transition-opacity duration-300"
+        />
+        {imgs.length > 1 && (
+          <>
+            <button
+              onClick={() => setActive((p) => (p - 1 + imgs.length) % imgs.length)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={() => setActive((p) => (p + 1) % imgs.length)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronRight size={18} />
+            </button>
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {imgs.map((_: string, i: number) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`w-1.5 h-1.5 rounded-full transition-colors ${i === active ? "bg-white" : "bg-white/40"}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      {imgs.length > 1 && (
+        <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
+          {imgs.map((src: string, i: number) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`flex-shrink-0 w-20 h-14 rounded overflow-hidden border-2 transition-colors ${i === active ? "border-primary" : "border-border"}`}
+            >
+              <img src={src} alt="" className="w-full h-full object-cover object-top" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ProjectDetail = () => {
   const { id } = useParams();
   const allItems = [...projects, ...caseStudies];
@@ -182,9 +237,7 @@ const ProjectDetail = () => {
           </div>
         )}
 
-        <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-12 border border-border">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
-        </div>
+        <ProjectGallery project={project} />
 
         {/* Case study sections */}
         {hasFullCaseStudy && (

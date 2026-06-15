@@ -10,6 +10,7 @@ export interface ProjectBase {
   category: string;
   tags: string[];
   image: string;
+  images?: string[];
 }
 
 export interface Project extends ProjectBase {
@@ -69,7 +70,12 @@ export const projects: Project[] = [
       "Designed and shipped a conversational AI platform where sales teams create and deploy voice agents through natural chat, with integrated campaign and lead management.",
     category: "AI Product · 0→1",
     tags: ["Voice AI", "B2B", "Campaigns", "Retell AI"],
-    image: "/screenshots/raj-ai-studio.png",
+    image: "/screenshots/raj-ai-home.png",
+    images: [
+      "/screenshots/raj-ai-home.png",
+      "/screenshots/raj-ai-agent.png",
+      "/screenshots/raj-ai-crm.png",
+    ],
     overview:
       "Raj is a conversational B2B outreach platform where users build AI voice agents simply by describing what they need in chat. It handles the entire workflow — agent creation, campaign setup, lead ingestion, and outbound calling — without requiring any technical setup from the user.",
     role: "Product Manager · Builder",
