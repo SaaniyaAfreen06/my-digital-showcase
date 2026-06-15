@@ -17,18 +17,18 @@ const Contact = () => (
         Let's work together
       </h1>
       <p className="text-muted-foreground mb-10">
-        I'm always open to discussing product roles, interesting projects,
-        or opportunities to collaborate.
+        I'm open to PM roles at ambitious teams building AI, developer tools, or 0→1 products.
+        Feel free to reach out — I'm always happy to chat about what you're building.
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <Button asChild className="rounded-full px-6 gap-2 h-12">
-          <a href="mailto:hello@saaniya.dev">
+          <a href="mailto:saaniyaafreen2000@gmail.com">
             <Mail size={18} />
-            hello@saaniya.dev
+            saaniyaafreen2000@gmail.com
           </a>
         </Button>
         <Button asChild variant="outline" className="rounded-full px-6 gap-2 h-12">
-          <a href="https://www.linkedin.com/in/saaniya-afreen" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/saaniya-afreen-527322197" target="_blank" rel="noopener noreferrer">
             <Linkedin size={18} />
             LinkedIn Profile
           </a>
