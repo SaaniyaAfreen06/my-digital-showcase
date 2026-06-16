@@ -106,7 +106,6 @@ export const projects: Project[] = [
       "Built CRM lookup mid-conversation, enabling contextual outreach decisions",
     ],
   },
-  {
 ];
 
 // Case Studies — detailed entries (2-column grid, larger cards)
