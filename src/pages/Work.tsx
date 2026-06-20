@@ -1,11 +1,51 @@
+import { Fragment } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Seo from "@/components/Seo";
 import { projects, caseStudies } from "@/data/projects";
-import { useState } from "react";
+
+// Render a section body as prose, promoting inline "1) 2) 3)" pointers to an
+// ordered list so they read like a real article instead of a run-on paragraph.
+function SectionBody({ body }: { body: string }) {
+  const hasList = /(^|\s)1\)\s/.test(body) && /(^|\s)2\)\s/.test(body);
+  if (!hasList) {
+    return <p className="text-muted-foreground leading-relaxed">{body}</p>;
+  }
+  const firstIdx = body.search(/(^|\s)1\)\s/);
+  const intro = body.slice(0, firstIdx).trim();
+  const items = body
+    .slice(firstIdx)
+    .split(/\s*\b\d+\)\s/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return (
+    <div className="space-y-3">
+      {intro && <p className="text-muted-foreground leading-relaxed">{intro}</p>}
+      <ol className="space-y-2.5">
+        {items.map((item, i) => (
+          <li key={i} className="flex gap-3 text-muted-foreground leading-relaxed">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-semibold flex items-center justify-center mt-0.5">
+              {i + 1}
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+// A blog-style figure for inline / lead images.
+function Figure({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+  return (
+    <figure className={`rounded-lg overflow-hidden border border-border bg-muted ${className}`}>
+      <img src={src} alt={alt} className="w-full max-h-[540px] object-contain mx-auto" />
+    </figure>
+  );
+}
 
 const WorkIndex = () => (
   <section className="max-w-6xl mx-auto px-6 py-20">
@@ -123,60 +163,6 @@ const WorkIndex = () => (
   </section>
 );
 
-const ProjectGallery = ({ project }: { project: NonNullable<(typeof projects[0] | typeof caseStudies[0]) | undefined> }) => {
-  const imgs = (project as any).images ?? [project!.image];
-  const [active, setActive] = useState(0);
-  return (
-    <div className="mb-12">
-      <div className="aspect-video bg-muted rounded-lg overflow-hidden border border-border relative group">
-        <img
-          src={imgs[active]}
-          alt={project!.title}
-          className="w-full h-full object-contain transition-opacity duration-300"
-        />
-        {imgs.length > 1 && (
-          <>
-            <button
-              onClick={() => setActive((p) => (p - 1 + imgs.length) % imgs.length)}
-              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={() => setActive((p) => (p + 1) % imgs.length)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <ChevronRight size={18} />
-            </button>
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-              {imgs.map((_: string, i: number) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`w-1.5 h-1.5 rounded-full transition-colors ${i === active ? "bg-white" : "bg-white/40"}`}
-                />
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-      {imgs.length > 1 && (
-        <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
-          {imgs.map((src: string, i: number) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`flex-shrink-0 w-20 h-14 rounded overflow-hidden border-2 transition-colors ${i === active ? "border-primary" : "border-border"}`}
-            >
-              <img src={src} alt="" className="w-full h-full object-cover object-top" />
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
 const ProjectDetail = () => {
   const { id } = useParams();
   const allItems = [...projects, ...caseStudies];
@@ -196,6 +182,22 @@ const ProjectDetail = () => {
   }
 
   const hasFullCaseStudy = "sections" in project && project.sections;
+
+  // Blog-style images: one lead image, then up to 3 woven between sections.
+  const imgs = project.images ?? [project.image];
+  const leadImg = imgs[0];
+  const inline = imgs.slice(1, 4);
+  const sectionCount = hasFullCaseStudy ? project.sections!.length : 0;
+  const inlineAt: Record<number, string> = {};
+  if (sectionCount > 0) {
+    const k = inline.length;
+    inline.forEach((src, j) => {
+      let idx = Math.round(((j + 1) * sectionCount) / (k + 1)) - 1;
+      idx = Math.max(0, Math.min(sectionCount - 1, idx));
+      while (inlineAt[idx] !== undefined && idx < sectionCount - 1) idx++;
+      inlineAt[idx] = src;
+    });
+  }
 
   return (
     <section className="max-w-3xl mx-auto px-6 py-20">
@@ -264,23 +266,28 @@ const ProjectDetail = () => {
           </div>
         )}
 
-        <ProjectGallery project={project} />
+        {/* Lead image */}
+        <Figure src={leadImg} alt={project.title} className="mb-12" />
 
-        {/* Case study sections */}
+        {/* Case study sections — blog-style, with images woven in */}
         {hasFullCaseStudy && (
           <>
             <div className="space-y-10">
               {project.sections!.map((section, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                >
-                  <h2 className="text-xl font-display font-bold text-foreground mb-3">{section.heading}</h2>
-                  <p className="text-muted-foreground leading-relaxed">{section.body}</p>
-                </motion.div>
+                <Fragment key={i}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h2 className="text-xl font-display font-bold text-foreground mb-3">{section.heading}</h2>
+                    <SectionBody body={section.body} />
+                  </motion.div>
+                  {inlineAt[i] && (
+                    <Figure src={inlineAt[i]!} alt={`${project.title} — ${section.heading}`} />
+                  )}
+                </Fragment>
               ))}
             </div>
 
