@@ -231,6 +231,21 @@ const ProjectDetail = () => {
           {project.overview || project.description}
         </p>
 
+        {/* TL;DR — scannable summary */}
+        {"tldr" in project && project.tldr && (
+          <div className="mb-10 border border-border rounded-lg p-5 bg-muted/30">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-primary mb-3">TL;DR</p>
+            <ul className="space-y-2">
+              {project.tldr.map((point, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/90 leading-relaxed">
+                  <span className="text-primary mt-1.5 flex-shrink-0 w-1 h-1 rounded-full bg-primary" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {/* Meta info */}
         {hasFullCaseStudy && (
           <div className="grid grid-cols-3 gap-4 mb-10 border border-border rounded-lg p-5">

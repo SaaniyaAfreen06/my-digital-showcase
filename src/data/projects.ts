@@ -15,6 +15,7 @@ export interface ProjectBase {
 
 export interface Project extends ProjectBase {
   overview?: string;
+  tldr?: string[];
   role?: string;
   duration?: string;
   tools?: string[];
@@ -314,44 +315,51 @@ export const caseStudies: Project[] = [
   },
   {
     id: "cs-snacc-vs-zepto",
-    title: "Snacc vs Zepto Cafe — Why Infrastructure Beats Product",
+    title: "Snacc vs Zepto Café — Why Infrastructure Beats Product",
     description:
-      "Swiggy built Snacc in 16 days. Zepto Cafe had been building since 2022. Same problem, same user. One shut down in 13 months. A breakdown of why the better product lost.",
+      "Swiggy built Snacc in under 16 days. Zepto Café had been refining its kitchens since 2022. Same craving, same customer — one shut down ~13 months after launch. A teardown of why the better product lost.",
     category: "Product Teardown · Quick Commerce",
     tags: ["Quick Commerce", "Unit Economics", "Competitive Analysis", "GTM"],
     image: "/screenshots/granola-teardown.png",
     overview:
-      "Snacc had real PMF signals — users came back, habits formed, the product felt purpose-built for the snacking occasion. Zepto Cafe works but it feels bolted on. Snacc shut down in February 2026. This teardown unpacks the gap between a product that works for users and a business that can survive.",
+      "Snacc had the better product — curated menu, purpose-built UX, and PMF signals Swiggy's own shutdown note called 'emerging.' It still died ~13 months in. Zepto Café, slower and clunkier, crossed 100,000 orders a day. This teardown is about the gap between a product users love and a business that survives — and why, in quick commerce, infrastructure beats UX.",
+    tldr: [
+      "Snacc: built in <16 days, launched Jan 2025, shut Feb 2026 — ~13 months, ~2 cities.",
+      "Zepto Café: piloted 2022, own app Dec 2024 — ~100K orders/day and ~50% gross margin by early 2025.",
+      "Why the better product lost: Snacc paid full marginal cost per order; Zepto Café rode dark stores it had already paid for.",
+      "PM lesson: in quick commerce, validate the cost structure before you polish the product.",
+    ],
     role: "Independent Product Research",
     duration: "2026",
     tools: ["Competitive Analysis", "Unit Economics", "Product Strategy"],
     sections: [
       {
-        heading: "The Market",
-        body: "Quick commerce cracked grocery delivery under 10 minutes. The next frontier was food — not restaurant food, but the gap in between. The 3pm chai, the poha before a standup, the snack too small to order on Swiggy but too lazy to make at home. Zepto spotted this in 2022. Snacc entered in 2025. Same user, same problem, completely different foundations.",
+        heading: "The market",
+        body: "Quick commerce cracked sub-10-minute groceries. The next frontier was food — not a restaurant meal, but the gap in between: the 3pm chai, the poha before a standup, the snack too small for a full Swiggy order but too much effort to make. Zepto started piloting this craving in 2022; Swiggy's Snacc entered in January 2025. Same customer, same occasion — opposite foundations.",
       },
       {
-        heading: "Two Very Different Bets",
-        body: "Zepto Cafe launched in April 2022 with zero competition. It built inside existing dark stores — same riders, same last mile, same fixed costs. Adding a cafe meant adding a kitchen to a space already paid for. Snacc launched in January 2025 into a market where Zepto Cafe and Blinkit Bistro already existed. It built standalone micro-kitchens, a separate app, a separate rider fleet — and shipped it in 16 days. One was a conviction. The other was a reaction.",
+        heading: "Two different bets",
+        body: "Zepto Café piloted inside the main grocery app in 2022 and shipped as a standalone app in December 2024 — but always on top of existing dark stores: same rooms, same riders, same last mile, with a kitchen bolted into space already paid for. Snacc launched in under 16 days, into a market where Zepto Café and Blinkit Bistro already existed, on standalone micro-kitchens, a separate app, and a separate rider fleet. One was a multi-year conviction. The other was a 16-day reaction.",
       },
       {
-        heading: "Where It Broke: Unit Economics",
-        body: "A ₹100 poha order looks like a real transaction. Factor in dedicated kitchen rent, separate rider fleet, standalone app acquisition costs, and packaging — and there's nothing left. Zepto Cafe didn't have this problem. Grocery ops absorbed the fixed costs. Every cafe order improved dark store utilization without adding proportional cost. Snacc had no existing operation to lean on. Every order carried its full cost from day one. That's not something you iterate your way out of.",
+        heading: "Where it broke: unit economics",
+        body: "A ₹100 poha order looks like revenue. Subtract dedicated kitchen rent, a separate rider fleet, standalone-app acquisition, and packaging, and there's nothing left. Zepto Café never carried that weight — grocery operations already absorbed the fixed costs, so each café order improved dark-store utilization at near-zero marginal cost. By early 2025 the unit was running ~100K orders/day at a ~$100M annualized GMV run-rate with ~50% gross margins. Snacc paid full freight on every order from day one. That's a structural gap, not something you iterate your way out of.",
       },
       {
-        heading: "The Irony: Snacc Was the Better Product",
-        body: "Snacc felt purpose-built for the snacking occasion — curated menu, affordable pricing, UX that didn't feel like a grocery app with a food tab bolted on. Zepto Cafe works but it's clearly infrastructure-first, product-second. Snacc had genuine PMF signals. Users came back. Habits formed. Swiggy's own internal note said 'product-market fit was emerging.' But in quick commerce, a better product with a broken cost structure loses to a decent product with the right infrastructure every single time.",
+        heading: "The irony: Snacc was the better product",
+        body: "Snacc felt purpose-built — curated menu, sharp pricing, UX that wasn't a grocery app with a food tab stapled on. Zepto Café works, but it's clearly infrastructure-first. And yet Swiggy's own shutdown email conceded PMF 'was emerging': users came back, habits formed. It didn't matter. In quick commerce, a great product on a broken cost structure loses to a fine product on the right infrastructure — every time.",
       },
       {
-        heading: "What I'd Have Done as PM",
-        body: "Don't build Snacc as a standalone app. Launch it as a food category inside Swiggy Instamart — use existing dark stores as the kitchen backbone, Instamart riders for last mile, keep the Snacc brand and curated menu, change the architecture entirely. Swiggy Bolt was already delivering across hundreds of cities. Snacc should have been built on top of that moat, not beside it. The 16-day build wasn't the mistake. Building in isolation from Swiggy's own infrastructure was.",
+        heading: "What I'd have done as PM",
+        body: "Don't ship Snacc as a standalone app. Launch it as a food category inside Swiggy Instamart — existing dark stores as the kitchen backbone, Instamart riders for last mile, Bolt for speed — keeping the Snacc brand and curated menu but inverting the cost structure. Swiggy already had the moat; Snacc was built beside it instead of on top of it. The 16-day build wasn't the mistake. Building in isolation from Swiggy's own infrastructure was.",
       },
     ],
     outcomes: [
-      "Identified why the better product lost — infrastructure advantage beats UX advantage in quick commerce",
-      "Mapped the unit economics gap between Zepto Cafe (shared fixed costs) and Snacc (full marginal cost per order)",
-      "Proposed an alternate architecture: Snacc as a category inside Instamart, not a standalone app",
-      "Demonstrated PM thinking: understand the cost structure before you design the product",
+      "Diagnosed why the better product lost: infrastructure leverage beats UX in quick commerce",
+      "Quantified the unit-economics gap — Snacc's full marginal cost per order vs Zepto Café's ~50% gross margin riding shared dark stores",
+      "Traced the timeline that tells the story: ~16-day build and ~13-month life (Jan 2025–Feb 2026) vs Zepto's 2022 pilot scaling to ~100K orders/day",
+      "Proposed a concrete fix: Snacc as a category inside Instamart, not a standalone app",
+      "PM takeaway: pressure-test the cost structure before polishing the product",
     ],
   },
 ];
