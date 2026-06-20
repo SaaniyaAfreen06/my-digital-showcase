@@ -1,6 +1,12 @@
+export interface SectionMedia {
+  src: string;
+  caption?: string;
+}
+
 export interface CaseStudySection {
   heading: string;
   body: string;
+  media?: SectionMedia[];
 }
 
 export interface ProjectBase {
@@ -59,10 +65,16 @@ export const projects: Project[] = [
       {
         heading: "What I built",
         body: "A working chat-first onboarding flow: guided conversational setup, 'magic prompts' that suggest what to say when a client is stuck, an agent configured automatically from their answers, and full editability so nothing the system inferred is locked away. Where the standard flow front-loaded complexity, this let it surface only as needed.",
+        media: [
+          { src: "/screenshots/onboarding-agent.png", caption: "The agent that got configured straight from the conversation — persona, tone, and behaviour, no forms." },
+        ],
       },
       {
         heading: "The product thinking",
         body: "The guiding principle was progressive disclosure — reveal capability gradually instead of dumping it upfront, so complexity arrives only when the client is ready for it. Everything the system generates stays transparent and editable, so it assists without becoming a black box. And the scope was deliberate: this tool's job is to get a client from zero to a working agent. Tuning how that agent actually talks — prompt training and roleplay — is a different job, handled by a dedicated tool, so neither experience tries to do too much.",
+        media: [
+          { src: "/screenshots/onboarding-review.png", caption: "Nothing the system inferred is locked away — every detail stays reviewable and editable." },
+        ],
       },
     ],
     outcomes: [
@@ -96,6 +108,9 @@ export const projects: Project[] = [
       {
         heading: "The workflow before",
         body: "When a customer is due for KYC refresh, a relationship manager has to call them, ask a fixed set of tax-residency questions, write the answers onto a form, and — if anything is unusual — hand the case to a compliance officer. Multiply that by every customer coming due each quarter. Contact rates are low, the same customers get called again and again, the paperwork is inconsistent, and there's no clean record of who said what, when.",
+        media: [
+          { src: "/screenshots/fatca-customers.png", caption: "The customer book a manual process has to work through — FATCA status per account, with the US-person flags that decide everything." },
+        ],
       },
       {
         heading: "The friction that actually hurt",
@@ -104,10 +119,16 @@ export const projects: Project[] = [
       {
         heading: "The redesign",
         body: "I designed the POC dashboard-first, voice-second. The dashboard owns the truth: it identifies who's due, risk-tiers them (1/3/5-year cycles), and triggers the call at the right moment. OneInbox's outbound voice agent handles the actual conversation — authentication, consent, tax-residency questions, and US-indicia screening — in natural speech, with the exact regulatory phrasing baked in across 12+ conversation branches so it never improvises. Straight-through cases are auto-classified and closed. Only true exceptions move forward.",
+        media: [
+          { src: "/screenshots/fatca-kyc-refresh.png", caption: "The dashboard drives every refresh cycle — risk tier, status, next-due date, and call attempts, all in one view." },
+        ],
       },
       {
         heading: "The product call I'm proud of",
         body: "The naive version automates the call and dumps every result on a compliance officer to review. That just moves the bottleneck. The real design decision was making the system confident enough to *close* simple cases on its own and disciplined about what counts as an exception — multi-jurisdiction, US person, refused consent, missing TIN. Compliance officers only ever see cases that genuinely need a human judgment, with the tax data, escalation reason, a pre-filled FATCA/CRS classification, and the exact documents required (W-9, W-8BEN, CRS Self-Cert) already laid out. The scarce resource here is officer attention — the whole product is built to protect it.",
+        media: [
+          { src: "/screenshots/fatca-case-review.png", caption: "Case Review: only genuine exceptions — multi-jurisdiction, US indicia, refused consent — surface here, each pre-classified for the officer." },
+        ],
       },
       {
         heading: "What almost shipped broken",
@@ -155,6 +176,9 @@ export const projects: Project[] = [
       {
         heading: "What I built",
         body: "Two phases. First, the client has a live voice conversation with a 'trainer' agent that interviews them — what does your agent do, who does it talk to, what tone, what should it never say, how does it handle objections, when does it escalate. They just talk. The transcript goes to GPT-4, which synthesizes a complete, well-structured system prompt (persona, goals, constraints, objection handling, escalation logic) — the part clients couldn't do. Second, one click pushes that prompt to a test agent and starts a roleplay call: the client plays the customer and hears their agent in action. Something off? Describe the change, regenerate, roleplay again. Minutes, not days.",
+        media: [
+          { src: "/screenshots/voice-trainer-roleplay.png", caption: "Phase two: one click turns the generated prompt into a live roleplay call — the client plays the customer and hears the agent handle an objection before any real one does." },
+        ],
       },
       {
         heading: "The product call I'm proud of",
@@ -248,18 +272,38 @@ export const projects: Project[] = [
       {
         heading: "The bet behind V1",
         body: "We didn't want to be 'a tool that builds a deck' — anyone can do that in Canva. The bet was to embed thinking models into every step: when a founder enters their problem and solution, the product helps them assess validity and feasibility, surface how the industry actually solves it, build a bottoms-up market size, an ICP, a PMF scorecard, GTM funnels — across 20+ industry templates, powered by pre-engineered AI prompts. The deck and model would fall out as a byproduct of better thinking. We shipped this and put it in front of 250–300 founders.",
+        media: [
+          { src: "/screenshots/pg-5.png", caption: "A PMF scorecard pushing founders to validate demand, willingness to pay, and differentiation — not just assert them." },
+          { src: "/screenshots/pg-3.png", caption: "20+ industry ICP templates, so a founder skips months of GTM guesswork." },
+          { src: "/screenshots/pg-4.png", caption: "Bottoms-up GTM — funnel content mapped across TOFU / MOFU / BOFU." },
+          { src: "/screenshots/pg-2.png", caption: "The investment-ask step: runway, burn, and raise, with the logic made defensible." },
+        ],
       },
       {
         heading: "The signal I had to be honest about",
         body: "V1 had everything — and still wasn't working. Founders weren't coming for thinking models; they were coming for an outcome. They typed in a problem and asked, 'how do I get my deck?' We had built the richest part of the journey and buried the thing people actually wanted. Positioning compounded the miss: marketed as a 'business planning tool,' founders expected financial projections we'd deliberately scoped out, and the word 'planning' set the wrong expectation entirely. The product wasn't the problem. The journey, the positioning, and the order of value were.",
+        media: [
+          { src: "/screenshots/pg-6.png", caption: "V1 even scored 'investor-grade readiness' — we'd built the richest part of the journey." },
+          { src: "/screenshots/pg-7.png", caption: "...but this is what founders actually came for: a finished deck. We'd buried it behind the process." },
+        ],
       },
       {
         heading: "Learning what NOT to productize",
         body: "The sharpest output of that year was negative space. The extensive 5-year financial model failed because it needed founders to already have digitized books — a 'step zero' that doesn't exist for early founders; the real need was a simple Q&A that spits out a usable P&L. Custom pitch decks stayed a service, not a feature, because founders came for narrative and storytelling — judgment a template can't replace. The data room we built was never even pulled by a single user. Knowing what to kill, what to keep as a service, and what to never build is as valuable as knowing what to ship.",
+        media: [
+          { src: "/screenshots/pg-11.png", caption: "The over-built 5-year model's real replacement — 'Cash', a guided Q&A, not a spreadsheet that needs digitized books." },
+        ],
       },
       {
         heading: "The redesign: V2, outcome-first",
         body: "V2 inverts the journey. A founder lands on 'what problem are you solving?', enters three problems and solutions, and a clean pre-seed deck (all 12 mandatory slides) forms as they go. The thinking models are still there — but optional, surfaced only when a founder chooses to go deeper, never forced. Financials moved into a lightweight Q&A agent that asks ~12–16 questions and returns a usable P&L, no spreadsheet literacy required. Same depth, radically simpler path to the outcome people actually came for.",
+        media: [
+          { src: "/screenshots/pg-8.png", caption: "V2 output: a pre-seed deck that forms as the founder types — here, the revenue model." },
+          { src: "/screenshots/pg-9.png", caption: "Same deck, restyled instantly — the outcome is one click, not a service engagement." },
+          { src: "/screenshots/pg-10.png", caption: "A market-size slide generated from the founder's own inputs." },
+          { src: "/screenshots/pg-12.png", caption: "Cash asks plain questions — business type, funding history — no finance jargon." },
+          { src: "/screenshots/pg-13.png", caption: "...and returns a usable P&L, with industry benchmarks to sanity-check the numbers." },
+        ],
       },
     ],
     outcomes: [
@@ -304,10 +348,17 @@ export const caseStudies: Project[] = [
       {
         heading: "The decision that won: no bot",
         body: "Every rival sends a visible bot into your meeting. Granola doesn't — it records locally, invisible to everyone on the call. People dismiss this as a feature; I think it's the whole company. A bot changes the room: the second people clock that a third-party recorder has joined, they hedge, they perform, they say less. Granola bet that removing that one bit of friction was worth real engineering cost, and a $250M-to-$1.5B year — on 250% quarterly revenue growth and ~10% weekly user growth — says the bet was right.",
+        media: [
+          { src: "/screenshots/granola-app.png", caption: "Granola's home — local capture, no bot in the meeting. The whole bet, in one screen." },
+        ],
       },
       {
         heading: "Why incumbents can't just copy it",
         body: "Here's the part I find most interesting: no-bot isn't only nicer, it's structurally hard for the incumbents to match. Otter, Fireflies, and Fathom are built around the bot — it's how they join calls, pull audio, and attribute speakers across every platform. Tearing it out means rebuilding capture from scratch, giving up easy server-side processing, and shipping native apps for every OS. Their own architecture is the thing stopping them. That's the best kind of moat: not a feature competitors lack, but one their foundations actively punish them for adding.",
+        media: [
+          { src: "/screenshots/fireflies-app.jpg", caption: "Fireflies is built around the bot and the full transcript — the architecture that makes 'no bot' so hard for incumbents to copy." },
+          { src: "/screenshots/otter-app.png", caption: "Otter, same shape: a bot joins, then summarizes. Capable — but it changes the room Granola chose to leave alone." },
+        ],
       },
       {
         heading: "The quieter moat: hybrid notes",
@@ -360,10 +411,17 @@ export const caseStudies: Project[] = [
       {
         heading: "Why Snacc existed",
         body: "Quick commerce cracked sub-10-minute groceries; food was the obvious next frontier — not restaurant meals, but the in-between cravings: the 3pm chai, the poha before a standup, the snack too small to bother ordering and too much effort to make. Zepto started piloting this in 2022. Swiggy's Snacc jumped in January 2025. Same craving, same customer — and that's exactly why I find the comparison so clean. The product was barely the variable. What each one was built on was.",
+        media: [
+          { src: "/screenshots/snacc-app-1.jpg", caption: "Snacc — purpose-built for the snack craving: curated menu, sharp pricing, 'dope dishes in minutes.'" },
+        ],
       },
       {
         heading: "Two bets, one balance sheet",
         body: "Zepto Café piloted inside the grocery app in 2022, then spun out as its own app in December 2024 — but always on top of dark stores it already ran: same rooms, same riders, a kitchen dropped into space already paid for. Snacc shipped in under 16 days, on standalone micro-kitchens, its own app, and its own rider fleet, into a market where Zepto Café and Blinkit Bistro already existed. Here's the part I keep coming back to: a 16-day standalone app is what you build when you can't — or won't — wait for the Instamart and Bolt teams to make room on their roadmaps. The speed was genuinely impressive. It was also the tell.",
+        media: [
+          { src: "/screenshots/zepto-cafe-1.jpg", caption: "Zepto Café — the same craving, but served off dark stores Zepto already ran." },
+          { src: "/screenshots/zepto-cafe-2.jpg", caption: "Café curated inside the Zepto app: a kitchen bolted onto infrastructure already paid for by groceries." },
+        ],
       },
       {
         heading: "The math that actually killed it",
@@ -372,6 +430,9 @@ export const caseStudies: Project[] = [
       {
         heading: "The uncomfortable part: Snacc was better",
         body: "I want to be fair to Snacc, because it wasn't the weak product — it was the stronger one. Curated menu, sharp pricing, a UX that wasn't a grocery app with a food tab stapled on. Swiggy's own shutdown note admitted PMF 'was emerging': people came back, habits formed. And it still died in ~13 months. That's the line I'd put on the wall — in quick commerce, product quality is table stakes and cost structure is the moat. A great product on the wrong infrastructure loses to a fine product on the right one, every single time.",
+        media: [
+          { src: "/screenshots/snacc-app-2.jpg", caption: "Snacc's menu and checkout — the stronger product that still couldn't outrun its cost structure." },
+        ],
       },
       {
         heading: "What I'd have done",

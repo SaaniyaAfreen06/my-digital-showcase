@@ -38,11 +38,18 @@ function SectionBody({ body }: { body: string }) {
   );
 }
 
-// A blog-style figure for inline / lead images.
-function Figure({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+// A blog-style figure for lead / inline images, with optional caption.
+function Figure({ src, alt, caption, className = "" }: { src: string; alt: string; caption?: string; className?: string }) {
   return (
-    <figure className={`rounded-lg overflow-hidden border border-border bg-muted ${className}`}>
-      <img src={src} alt={alt} className="w-full max-h-[540px] object-contain mx-auto" />
+    <figure className={className}>
+      <div className="rounded-lg overflow-hidden border border-border bg-muted">
+        <img src={src} alt={alt} className="w-full max-h-[540px] object-contain mx-auto" />
+      </div>
+      {caption && (
+        <figcaption className="mt-2 text-xs text-muted-foreground text-center italic px-4">
+          {caption}
+        </figcaption>
+      )}
     </figure>
   );
 }
@@ -183,22 +190,6 @@ const ProjectDetail = () => {
 
   const hasFullCaseStudy = "sections" in project && project.sections;
 
-  // Blog-style images: one lead image, then up to 3 woven between sections.
-  const imgs = project.images ?? [project.image];
-  const leadImg = imgs[0];
-  const inline = imgs.slice(1, 4);
-  const sectionCount = hasFullCaseStudy ? project.sections!.length : 0;
-  const inlineAt: Record<number, string> = {};
-  if (sectionCount > 0) {
-    const k = inline.length;
-    inline.forEach((src, j) => {
-      let idx = Math.round(((j + 1) * sectionCount) / (k + 1)) - 1;
-      idx = Math.max(0, Math.min(sectionCount - 1, idx));
-      while (inlineAt[idx] !== undefined && idx < sectionCount - 1) idx++;
-      inlineAt[idx] = src;
-    });
-  }
-
   return (
     <section className="max-w-3xl mx-auto px-6 py-20">
       <Seo
@@ -267,9 +258,9 @@ const ProjectDetail = () => {
         )}
 
         {/* Lead image */}
-        <Figure src={leadImg} alt={project.title} className="mb-12" />
+        <Figure src={project.image} alt={project.title} className="mb-12" />
 
-        {/* Case study sections — blog-style, with images woven in */}
+        {/* Case study sections — blog-style, images placed beside the text they relate to */}
         {hasFullCaseStudy && (
           <>
             <div className="space-y-10">
@@ -284,9 +275,15 @@ const ProjectDetail = () => {
                     <h2 className="text-xl font-display font-bold text-foreground mb-3">{section.heading}</h2>
                     <SectionBody body={section.body} />
                   </motion.div>
-                  {inlineAt[i] && (
-                    <Figure src={inlineAt[i]!} alt={`${project.title} — ${section.heading}`} />
-                  )}
+                  {section.media?.map((m, mi) => (
+                    <Figure
+                      key={mi}
+                      src={m.src}
+                      alt={m.caption ?? `${project.title} — ${section.heading}`}
+                      caption={m.caption}
+                      className="mt-6"
+                    />
+                  ))}
                 </Fragment>
               ))}
             </div>
