@@ -123,60 +123,64 @@ export const projects: Project[] = [
   },
   {
     id: "cs-voice-interview-agent",
-    title: "Voice Agent Builder for Non-Technical Clients",
+    title: "Train Your AI Agent Like a Call-Center Rep",
     description:
-      "Our clients — sales leads, CS managers, bank operations teams — needed to configure their own AI voice agents. None of them could write a system prompt. So I built a tool that lets them talk to an AI trainer instead, and turns that conversation into a working agent they can test immediately.",
+      "OneInbox clients kept getting stuck on the same thing: how should the agent's prompt be structured this time? So I borrowed the mental model every call center already knows — you don't hand a new rep a config file, you tell them how to handle calls and you roleplay. I built a tool that trains an AI agent the same way.",
     category: "Voice AI · Internal Tooling",
-    tags: ["ElevenLabs", "OpenAI GPT-4", "Next.js", "Voice UX", "Prompt Engineering"],
+    tags: ["Voice AI", "OpenAI GPT-4", "Onboarding", "Prompt Engineering", "OneInbox"],
     image: "/screenshots/retell-voice.png",
     overview:
-      "At OneInbox, onboarding a new enterprise client meant a PM or engineer had to write the voice agent's system prompt for them. Clients knew exactly what they wanted — 'be friendly but not pushy', 'always offer to escalate to a human', 'never promise a refund' — but couldn't translate that into a prompt. This tool removes the middleman: clients conduct a voice interview with an AI trainer, GPT-4 synthesizes the prompt from the transcript, and they test the resulting agent immediately via another voice call.",
+      "At OneInbox, every new client agent started with the same blocker: clients knew exactly how they wanted their agent to behave, but not how to turn that into a structured system prompt — and the right structure changed for every use case. Instead of teaching clients to write prompts, I reframed the whole thing around a model they already understood: training a call-center employee. You explain how to handle the call, then you roleplay. This tool does exactly that — interview the client about how the agent should behave, generate the prompt for them, then roleplay-test the agent live before it ever talks to a real customer.",
     role: "Product Manager · Builder",
     duration: "2025",
-    tools: ["ElevenLabs WebRTC", "OpenAI GPT-4", "Next.js 14", "TypeScript", "Supabase"],
+    tools: ["Voice Agent (WebRTC)", "OpenAI GPT-4", "Next.js", "TypeScript", "Supabase"],
     sections: [
       {
-        heading: "The Real Problem: Prompt Writing Is a Specialist Skill",
-        body: "Building an AI voice agent requires a system prompt — instructions that define how the agent behaves, what it can and can't say, how it handles objections, when it escalates. Writing a good prompt is genuinely hard. It requires knowing how LLMs respond to different phrasing, how to handle edge cases, how to set boundaries without breaking conversation flow. Our enterprise clients — bank ops teams, sales managers, CS leads — had none of this. Every new client deployment required us to write their prompt for them. It didn't scale.",
+        heading: "The workflow before",
+        body: "Spinning up a voice agent meant writing a system prompt — the instructions that define how it behaves, what it can and can't say, how it handles objections, when it escalates. Our clients (bank ops teams, sales leads, CS managers) knew their business cold but had no idea how to express it as a prompt, and the 'right' structure was different for every use case. So every new agent ran through us: a PM or engineer wrote the prompt by hand. It didn't scale, and clients were dependent on us for the most important part of their own product.",
       },
       {
-        heading: "Phase 1: Clients Talk, Not Type",
-        body: "The tool starts a live voice call between the client and a structured 'requirements trainer' agent built on ElevenLabs. The trainer asks the right questions: What does your agent do? Who does it talk to? What tone? What should it never say? How should it handle objections? What's the escalation trigger? The client answers naturally — just talking, not filling a form. The entire conversation is transcribed in real time.",
+        heading: "The friction that actually hurt",
+        body: "Prompt writing is a genuine specialist skill — it requires knowing how an LLM reacts to phrasing, how to set boundaries without breaking the conversation, how to cover edge cases. Asking a sales manager to do it is like asking them to write the call-center script in the model's native language. They'd give us vague instructions, we'd interpret, the agent would behave slightly wrong, and we'd loop again. Every new client deployment turned into a multi-day back-and-forth.",
       },
       {
-        heading: "Phase 2: GPT-4 Writes the Prompt",
-        body: "When the client finishes, the transcript is sent to GPT-4 with a structured extraction schema. GPT-4 synthesizes a complete system prompt: persona, goals, tone, constraints, objection handling, escalation logic, and fallback behavior — all organized in sections the agent can parse cleanly. One click on 'Update Agent & Test' pushes the generated prompt to ElevenLabs and starts a live test call. If something sounds wrong, the client describes the change, regenerates, and tests again. The whole iteration loop takes minutes.",
+        heading: "The mental model that unlocked it",
+        body: "Call centers already solved this problem decades ago. You don't onboard a new agent by handing them a configuration document — you tell them what the job is, how to talk to customers, what never to say, and then you roleplay a few calls until they're ready. I built the tool around that exact loop. Clients aren't 'configuring an agent.' They're training one, in the language they already think in.",
       },
       {
-        heading: "Why This Was the Right PM Call",
-        body: "The alternative was to build a form-based configurator — dropdowns, text fields, tone sliders. We prototyped it. It still required clients to think in 'prompt terms' rather than 'business terms.' Voice interview solved the translation problem completely: clients say what they mean, the AI writes what the system needs. It also meant onboarding a new client went from a multi-day back-and-forth with our team to a self-serve session under 30 minutes.",
+        heading: "What I built",
+        body: "Two phases. First, the client has a live voice conversation with a 'trainer' agent that interviews them — what does your agent do, who does it talk to, what tone, what should it never say, how does it handle objections, when does it escalate. They just talk. The transcript goes to GPT-4, which synthesizes a complete, well-structured system prompt (persona, goals, constraints, objection handling, escalation logic) — the part clients couldn't do. Second, one click pushes that prompt to a test agent and starts a roleplay call: the client plays the customer and hears their agent in action. Something off? Describe the change, regenerate, roleplay again. Minutes, not days.",
+      },
+      {
+        heading: "The product call I'm proud of",
+        body: "The obvious build was a form — dropdowns for tone, text fields for rules, a config screen. We considered it. But a form still forces clients to think in 'agent settings' instead of 'how I'd train a person,' and it can't capture the nuance of an actual conversation. Voice-in, roleplay-out matched the real job. The roleplay test was the non-negotiable: clients should hear their agent handle a call before it ever reaches a customer — the same reason no call center puts a new rep on live calls without a practice round first.",
       },
     ],
     outcomes: [
-      "Eliminated PM/engineer dependency for every new client agent — clients configure their own",
-      "Voice-first input: clients describe agent behavior in plain language, no prompt knowledge required",
-      "GPT-4 synthesizes transcript into structured system prompt with persona, constraints, and escalation logic",
-      "Live test call immediately after generation — clients hear their agent before they commit",
-      "Onboarding time for new agent configuration reduced from days to under 30 minutes",
+      "Reframed agent setup from 'write a prompt' to 'train a rep and roleplay' — a model clients already understood",
+      "Removed the PM/engineer dependency: clients configure their own agents end-to-end",
+      "Voice interview captures intent in plain language; GPT-4 synthesizes the structured prompt clients couldn't write",
+      "Built-in roleplay test — clients hear and correct the agent before it talks to a real customer",
+      "Collapsed new-agent setup from a multi-day back-and-forth into a self-serve session of minutes",
     ],
   },
   {
     id: "cs-manus-ai-processor",
-    title: "Dial-Ready — Lead Data Cleanup for Outbound Campaigns",
+    title: "Dial-Ready — Making Uploaded Leads Actually Callable",
     description:
-      "Every outbound voice campaign starts with a messy lead list — and a phone column the dialer can't actually call. I built the layer that turns raw uploads into dial-ready numbers, so campaigns stop failing silently on data nobody checked.",
-    category: "AI Tooling · Sales Infrastructure",
-    tags: ["Voice Campaigns", "Lead Data", "E.164", "AI Workflow", "Data Quality"],
+      "OneInbox clients upload lead lists to run outbound voice campaigns — but the phone numbers come in every format imaginable, and a dialer can't call a number it can't parse. I introduced the feature that cleans every uploaded list into dial-ready numbers, so campaigns stop failing silently on data nobody checked.",
+    category: "Voice AI · OneInbox Feature",
+    tags: ["Voice Campaigns", "Lead Data", "E.164", "OneInbox", "Data Quality"],
     image: "/screenshots/manus-ai.png",
     overview:
-      "When a sales team wants to run an outbound voice campaign, the first thing they do is upload a lead list. The last thing anyone checks is whether the phone numbers are actually callable. Dial-Ready sits in that gap: it takes a raw, inconsistent lead file and returns one where every number the system can trust is formatted to dial — and every number it can't is flagged, not guessed.",
+      "On OneInbox, running an outbound voice campaign starts with one step: upload your leads. The problem is what nobody checks — whether the phone numbers in that file are actually callable. Numbers arrive with missing country codes, hyphens, brackets, local formats. The dialer needs clean E.164 to connect. I introduced Dial-Ready to sit in that gap: it takes the raw lead file a client uploads and returns one where every number the system can trust is formatted to dial — and every number it can't is flagged, not guessed.",
     role: "Product Manager · Builder",
     duration: "2025",
     tools: ["AI Workflow Engine", "Supabase", "Node.js", "libphonenumber-js", "REST APIs"],
     sections: [
       {
         heading: "The workflow before",
-        body: "A sales or ops person exports a lead list and, before any campaign can launch, opens it in a spreadsheet to fix the phone column by hand — adding country codes, stripping hyphens and brackets, eyeballing which '9901108427' belongs to which country. On a real list this is hundreds or thousands of rows of tedious, error-prone manual work that has to happen every single time a new list comes in.",
+        body: "A client wants to run an outbound campaign, so they export their leads and upload the file to OneInbox. Before that list can actually dial, someone has to fix the phone column by hand — adding country codes, stripping hyphens and brackets, eyeballing which '9901108427' belongs to which country. On a real list that's hundreds or thousands of rows of tedious, error-prone work, repeated every single time a new list comes in.",
       },
       {
         heading: "The friction that actually hurt",
