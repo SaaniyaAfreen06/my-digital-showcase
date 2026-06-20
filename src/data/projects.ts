@@ -217,7 +217,7 @@ export const projects: Project[] = [
       },
       {
         heading: "The redesign",
-        body: "Upload the raw file and an AI pass does the judgment work a human was doing manually: detect the phone column automatically (Mobile, Phone, Tel, Contact, or any column that looks like numbers), strip all formatting, and test each value against country codes for 200+ countries — 1-, 2-, and 3-digit prefixes. Numbers that resolve get the '+' prefix and land in 'dial-ready.' Numbers with no detectable country code go to 'needs country code.' Empty fields or junk like a lone '0' go to 'no phone.' Every other column in the row is preserved untouched.",
+        body: "The whole tool is a chat — you drop your lead file in like you would in ChatGPT, and Dial-Ready replies with what it found. It detects the phone column on its own, tests every value against country codes for 200+ countries, and sorts the list three ways: numbers it's sure about land in 'dial-ready' with an Approve button; numbers missing a country code arrive with a one-tap suggestion ('Add +91 to 140 India numbers') that auto-applies the moment you click it; anything genuinely broken you fix with inline editing, right there in the thread. Approved numbers collect in one place to download as a clean, dial-ready CSV — and every other column in the file is preserved untouched.",
       },
       {
         heading: "The product call I'm proud of",
