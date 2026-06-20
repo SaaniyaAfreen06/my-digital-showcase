@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const SITE = "Saaniya Afreen — Product Manager";
-const BASE = "https://saaniya-s-projects1.vercel.app";
+const BASE = "https://saaniyaafreen.vercel.app";
 
 interface SeoProps {
   /** Page-specific title; the site name is appended automatically. */
