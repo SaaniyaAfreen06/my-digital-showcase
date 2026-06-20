@@ -277,11 +277,11 @@ export const projects: Project[] = [
 export const caseStudies: Project[] = [
   {
     id: "granola-product-teardown",
-    title: "Granola Teardown — Why the No-Bot App Won",
+    title: "Granola — Why the No-Bot App Won",
     description:
-      "A teardown of Granola — the AI notes app that beat bigger rivals to a $1.5B valuation. Why one trust-architecture decision won, and 4 PM-prioritized fixes for its gaps.",
-    category: "Product Thinking · Analysis",
-    tags: ["Product Teardown", "AI Tools", "Competitive Analysis", "Strategy"],
+      "A case study on Granola — the AI notes app that beat bigger rivals to a $1.5B valuation. Why one trust-architecture decision won, why incumbents can't copy it, and 4 fixes I'd ship.",
+    category: "Case Study · AI Tools",
+    tags: ["Case Study", "AI Tools", "Competitive Analysis", "Strategy"],
     image: "/screenshots/granola-teardown.png",
     overview:
       "Granola competes with Fireflies, Otter, and Fathom — rivals with more features and bigger teams. It's winning anyway: 250% revenue growth in a quarter, ~10% weekly user growth, and a jump from a $250M valuation (May 2025) to $1.5B (Mar 2026). I tore it down to find why — the architecture call, the UX philosophy, the moat, and where it still falls short.",
@@ -296,28 +296,32 @@ export const caseStudies: Project[] = [
     tools: ["Product Analysis", "Competitive Research", "User Behavior Synthesis"],
     sections: [
       {
-        heading: "The winning insight: no bot",
-        body: "Every rival sends a visible bot into your meeting. Granola records locally — invisible to everyone on the call. That's not a technical preference; it's a trust decision. A bot changes the room: people talk differently when a third party is obviously recording. Granola bet that removing that friction was worth the engineering cost, and the market agreed.",
+        heading: "The decision that won: no bot",
+        body: "Every rival sends a visible bot into your meeting. Granola doesn't — it records locally, invisible to everyone on the call. People dismiss this as a feature; I think it's the whole company. A bot changes the room: the second people clock that a third-party recorder has joined, they hedge, they perform, they say less. Granola bet that removing that one bit of friction was worth real engineering cost, and a $250M-to-$1.5B year — on 250% quarterly revenue growth and ~10% weekly user growth — says the bet was right.",
       },
       {
-        heading: "The moat: hybrid notes as personal signal",
-        body: "Most AI note tools take you out of the loop. Granola keeps you in it — you jot rough notes during the meeting, and those act as a priority signal. The output reflects what mattered to you, not just what was said, so notes feel authored rather than extracted. That's a different product philosophy, and it's hard to copy without rebuilding the experience around it.",
+        heading: "Why incumbents can't just copy it",
+        body: "Here's the part I find most interesting: no-bot isn't only nicer, it's structurally hard for the incumbents to match. Otter, Fireflies, and Fathom are built around the bot — it's how they join calls, pull audio, and attribute speakers across every platform. Tearing it out means rebuilding capture from scratch, giving up easy server-side processing, and shipping native apps for every OS. Their own architecture is the thing stopping them. That's the best kind of moat: not a feature competitors lack, but one their foundations actively punish them for adding.",
+      },
+      {
+        heading: "The quieter moat: hybrid notes",
+        body: "The second thing Granola gets right is keeping you in the loop. Most AI note tools take you out of it and hand back a transcript. Granola has you jot rough notes during the meeting, and those become a priority signal it writes around — so the output reflects what mattered to you, not just what was said. It reads like you wrote it, not like a machine summarized you. That's a softer edge than no-bot, but it's a big reason retention holds: the product feels personal, and personal is sticky.",
       },
       {
         heading: "Where it falls short",
-        body: "No screen capture, so decisions made on slides go missing. Speaker ID stops at basic diarization, making multi-person notes hard to parse. Integrations are thin — notes sit in Granola instead of flowing to Notion, Slack, or a CRM. And the lack of an Android or web build adds friction for mixed-device teams.",
+        body: "It's not flawless. No screen capture, so decisions made on slides vanish. Speaker ID stops at basic diarization, which makes multi-person notes hard to parse. Integrations are thin — notes sit in Granola instead of flowing into Notion, Slack, or a CRM. And the lack of a solid Android or web build adds friction for mixed-device teams.",
       },
       {
-        heading: "My 4 PM-prioritized fixes",
-        body: "1) Timestamped screenshot capture — ties slide content to the transcript without rebuilding the architecture. 2) You/Others speaker split — light tagging that sharply improves readability. 3) Section-level sharing — PMs share specific action items, not whole notes. 4) Notion/Slack auto-push on meeting end — low effort, high retention, because it closes the 'where did I put that?' loop. Ranked by engineering effort against retention impact.",
+        heading: "The bet I'd watch — and the 4 fixes I'd ship",
+        body: "At a $1.5B valuation the gravity is enterprise, and that's exactly where the thesis gets tested: IT teams want server-side capture, admin controls, and compliance logging — the bot-shaped features Granola won by refusing. So my job as PM would be to protect the no-bot identity while closing the gaps that don't compromise it: 1) timestamped screenshot capture, so slide decisions stop disappearing; 2) a simple you/others speaker split for readability; 3) section-level sharing, because people share action items, not whole notes; 4) Notion/Slack auto-push on meeting end — low effort, high retention, it closes the 'where did I put that?' loop. Ranked by engineering effort against retention impact.",
       },
     ],
     outcomes: [
       "Pinpointed the trust-architecture insight (no-bot, local capture) behind Granola's edge",
-      "Connected the thesis to results: $250M → $1.5B valuation, 250% quarterly revenue growth, ~10% weekly user growth",
-      "Mapped 4 prioritized fixes by engineering effort vs. retention impact",
-      "Benchmarked differentiation across Fireflies, Otter, and Fathom",
-      "Showed the PM arc: insight → gap → prioritized roadmap",
+      "Argued why it's defensible — the incumbents' bot-based architecture punishes them for copying it",
+      "Connected thesis to results: $250M → $1.5B valuation, 250% quarterly revenue growth, ~10% weekly user growth",
+      "Named the real risk: an enterprise pivot pressures the no-bot identity that won in the first place",
+      "Prioritized 4 fixes by engineering effort vs. retention impact",
     ],
   },
   {
@@ -325,7 +329,7 @@ export const caseStudies: Project[] = [
     title: "Snacc vs Zepto Café — Why Infrastructure Beats Product",
     description:
       "Swiggy built Snacc in under 16 days. Zepto Café had been refining its kitchens since 2022. Same craving, same customer — one shut down ~13 months after launch. A teardown of why the better product lost.",
-    category: "Product Teardown · Quick Commerce",
+    category: "Case Study · Quick Commerce",
     tags: ["Quick Commerce", "Unit Economics", "Competitive Analysis", "GTM"],
     image: "/screenshots/snacc-teardown.png",
     overview:
@@ -341,32 +345,32 @@ export const caseStudies: Project[] = [
     tools: ["Competitive Analysis", "Unit Economics", "Product Strategy"],
     sections: [
       {
-        heading: "The market",
-        body: "Quick commerce cracked sub-10-minute groceries. The next frontier was food — not a restaurant meal, but the gap in between: the 3pm chai, the poha before a standup, the snack too small for a full Swiggy order but too much effort to make. Zepto started piloting this craving in 2022; Swiggy's Snacc entered in January 2025. Same customer, same occasion — opposite foundations.",
+        heading: "Why Snacc existed",
+        body: "Quick commerce cracked sub-10-minute groceries; food was the obvious next frontier — not restaurant meals, but the in-between cravings: the 3pm chai, the poha before a standup, the snack too small to bother ordering and too much effort to make. Zepto started piloting this in 2022. Swiggy's Snacc jumped in January 2025. Same craving, same customer — and that's exactly why I find the comparison so clean. The product was barely the variable. What each one was built on was.",
       },
       {
-        heading: "Two different bets",
-        body: "Zepto Café piloted inside the main grocery app in 2022 and shipped as a standalone app in December 2024 — but always on top of existing dark stores: same rooms, same riders, same last mile, with a kitchen bolted into space already paid for. Snacc launched in under 16 days, into a market where Zepto Café and Blinkit Bistro already existed, on standalone micro-kitchens, a separate app, and a separate rider fleet. One was a multi-year conviction. The other was a 16-day reaction.",
+        heading: "Two bets, one balance sheet",
+        body: "Zepto Café piloted inside the grocery app in 2022, then spun out as its own app in December 2024 — but always on top of dark stores it already ran: same rooms, same riders, a kitchen dropped into space already paid for. Snacc shipped in under 16 days, on standalone micro-kitchens, its own app, and its own rider fleet, into a market where Zepto Café and Blinkit Bistro already existed. Here's the part I keep coming back to: a 16-day standalone app is what you build when you can't — or won't — wait for the Instamart and Bolt teams to make room on their roadmaps. The speed was genuinely impressive. It was also the tell.",
       },
       {
-        heading: "Where it broke: unit economics",
-        body: "A ₹100 poha order looks like revenue. Subtract dedicated kitchen rent, a separate rider fleet, standalone-app acquisition, and packaging, and there's nothing left. Zepto Café never carried that weight — grocery operations already absorbed the fixed costs, so each café order improved dark-store utilization at near-zero marginal cost. By early 2025 the unit was running ~100K orders/day at a ~$100M annualized GMV run-rate with ~50% gross margins. Snacc paid full freight on every order from day one. That's a structural gap, not something you iterate your way out of.",
+        heading: "The math that actually killed it",
+        body: "Forget GMV and look at contribution per order. A ₹100 snack earns a thin food margin, and Snacc then paid for everything underneath that order out of the same ₹100: a kitchen amortized over low early volume, a rider fleet with nothing else to carry between drops, install-driven CAC, packaging. At low density the rider cost alone can eat the margin. Zepto Café never saw that bill — its riders and dark stores were already funded by groceries, so each café order was close to pure incremental utilization (by early 2025 the unit ran ~50% gross margins at ~100K orders/day and a ~$100M annualized run-rate). Snacc carried full cost from order one. You don't iterate your way out of negative contribution margin — you have to change what the order sits on.",
       },
       {
-        heading: "The irony: Snacc was the better product",
-        body: "Snacc felt purpose-built — curated menu, sharp pricing, UX that wasn't a grocery app with a food tab stapled on. Zepto Café works, but it's clearly infrastructure-first. And yet Swiggy's own shutdown email conceded PMF 'was emerging': users came back, habits formed. It didn't matter. In quick commerce, a great product on a broken cost structure loses to a fine product on the right infrastructure — every time.",
+        heading: "The uncomfortable part: Snacc was better",
+        body: "I want to be fair to Snacc, because it wasn't the weak product — it was the stronger one. Curated menu, sharp pricing, a UX that wasn't a grocery app with a food tab stapled on. Swiggy's own shutdown note admitted PMF 'was emerging': people came back, habits formed. And it still died in ~13 months. That's the line I'd put on the wall — in quick commerce, product quality is table stakes and cost structure is the moat. A great product on the wrong infrastructure loses to a fine product on the right one, every single time.",
       },
       {
-        heading: "What I'd have done as PM",
-        body: "Don't ship Snacc as a standalone app. Launch it as a food category inside Swiggy Instamart — existing dark stores as the kitchen backbone, Instamart riders for last mile, Bolt for speed — keeping the Snacc brand and curated menu but inverting the cost structure. Swiggy already had the moat; Snacc was built beside it instead of on top of it. The 16-day build wasn't the mistake. Building in isolation from Swiggy's own infrastructure was.",
+        heading: "What I'd have done",
+        body: "I wouldn't have shipped Snacc as a standalone app at all. I'd have launched it as a food category inside Instamart — dark stores as the kitchen, Instamart riders carrying snacks alongside groceries, Bolt for speed — same brand, same curated menu, a completely different balance sheet. The 16-day build was never the mistake. Building it beside Swiggy's moat instead of on top of it was. And if the real blocker was that the infra teams wouldn't make room, that's a signal to fix the org — not to route around it with a separate app and a separate P&L.",
       },
     ],
     outcomes: [
-      "Diagnosed why the better product lost: infrastructure leverage beats UX in quick commerce",
-      "Quantified the unit-economics gap — Snacc's full marginal cost per order vs Zepto Café's ~50% gross margin riding shared dark stores",
-      "Traced the timeline that tells the story: ~16-day build and ~13-month life (Jan 2025–Feb 2026) vs Zepto's 2022 pilot scaling to ~100K orders/day",
-      "Proposed a concrete fix: Snacc as a category inside Instamart, not a standalone app",
-      "PM takeaway: pressure-test the cost structure before polishing the product",
+      "Diagnosed why the better product lost: in quick commerce, cost structure is the moat, not UX",
+      "Broke down the unit economics to contribution-per-order — Snacc's full marginal cost vs Zepto Café's ~50% gross margin riding shared dark stores",
+      "Read the 16-day standalone build as an org signal, not just a speed flex",
+      "Proposed a concrete fix: Snacc as a category inside Instamart, not a separate app and P&L",
+      "Pinned the timeline that tells the story: ~13-month life (Jan 2025–Feb 2026) vs Zepto's 2022 pilot scaling to ~100K orders/day",
     ],
   },
 ];
