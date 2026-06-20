@@ -25,6 +25,54 @@ export interface Project extends ProjectBase {
 // Projects — shorter entries (3-column grid)
 export const projects: Project[] = [
   {
+    id: "conversational-agent-onboarding",
+    title: "Onboarding a Voice Agent by Just Talking",
+    description:
+      "New OneInbox clients hit a wall at the very first step: setting up their agent meant a screen full of configuration before they understood what any of it did. I built a chat-first take on that onboarding — describe the agent you want in plain conversation, and the system sets it up for you.",
+    category: "Voice AI · OneInbox Onboarding",
+    tags: ["Conversational UI", "Onboarding", "Agent Setup", "OneInbox"],
+    image: "/screenshots/raj-ai-home.png",
+    images: [
+      "/screenshots/raj-ai-home.png",
+      "/screenshots/raj-ai-agent.png",
+      "/screenshots/raj-ai-crm.png",
+    ],
+    overview:
+      "On OneInbox, the very first thing a new client has to do is set up their voice agent — and that first step was also the hardest. The setup screen asked for configuration the client didn't yet understand, right at the activation moment that decides whether they stick. I built a chat-first approach to that onboarding: instead of filling out forms, the client describes what they want their agent to do in plain conversation, and the system turns that into a set-up, editable agent. (This flow handles getting the agent created; the prompt-training and roleplay-tuning live in a separate tool.)",
+    role: "Product Manager · Builder",
+    duration: "2025",
+    tools: ["React", "TypeScript", "Conversational UI", "LLM Prompting"],
+    sections: [
+      {
+        heading: "The workflow before",
+        body: "To set up an agent on OneInbox, a new client faced configuration first: agent purpose, conversation flow, behavior rules, settings. They had to make technical decisions and learn the system's vocabulary before they'd seen what the product could even do. The interface expected the client to adapt to the system — at the exact moment they were least equipped to.",
+      },
+      {
+        heading: "The friction that actually hurt",
+        body: "This lands at the worst possible moment: activation, the first time a client tries to get value. A wall of config fields is intimidating, 'building an AI agent' sounds technical, and clients don't yet know what's even possible to configure. Onboarding is where you lose people — and we were putting the hardest step first.",
+      },
+      {
+        heading: "The bet",
+        body: "What if setting up an agent felt like describing it to a person? The flow asks conversational prompts — 'What should your agent help people with? Who will talk to it? What tone should it have?' — and turns the answers into a configured agent. No forms. The client expresses intent; the system handles the structure.",
+      },
+      {
+        heading: "What I built",
+        body: "A working chat-first onboarding flow: guided conversational setup, 'magic prompts' that suggest what to say when a client is stuck, an agent configured automatically from their answers, and full editability so nothing the system inferred is locked away. Where the standard flow front-loaded complexity, this let it surface only as needed.",
+      },
+      {
+        heading: "The product thinking",
+        body: "The guiding principle was progressive disclosure — reveal capability gradually instead of dumping it upfront, so complexity arrives only when the client is ready for it. Everything the system generates stays transparent and editable, so it assists without becoming a black box. And the scope was deliberate: this tool's job is to get a client from zero to a working agent. Tuning how that agent actually talks — prompt training and roleplay — is a different job, handled by a dedicated tool, so neither experience tries to do too much.",
+      },
+    ],
+    outcomes: [
+      "Reframed agent setup from 'fill out a configuration' to 'describe what you want'",
+      "Targeted the hardest moment in onboarding — the first-time agent setup that decides activation",
+      "Built a working chat-first flow: guided prompts, magic suggestions, auto-configured editable agent",
+      "Applied progressive disclosure so complexity surfaces only as the client is ready for it",
+      "Scoped cleanly against the prompt-training tool — this flow creates the agent; training tunes it",
+    ],
+  },
+  {
     id: "cs-fatca-crs-voice-ai",
     title: "KYC on a Phone Call — A Banking Compliance POC",
     description:
