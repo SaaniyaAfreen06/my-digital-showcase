@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Users, Mic, Handshake } from "lucide-react";
+import Seo from "@/components/Seo";
 
 const events = [
   {
@@ -73,6 +74,11 @@ const events = [
 
 const Events = () => (
   <section className="max-w-4xl mx-auto px-6 py-20">
+    <Seo
+      title="Events & Community"
+      path="/events"
+      description="Talks, panels, and community work by Saaniya Afreen in the Voice AI ecosystem — co-hosting meetups and closed-door industry roundtables in Bangalore."
+    />
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}

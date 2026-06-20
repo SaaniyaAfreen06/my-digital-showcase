@@ -31,11 +31,11 @@ export const projects: Project[] = [
       "New OneInbox clients hit a wall at the very first step: setting up their agent meant a screen full of configuration before they understood what any of it did. I built a chat-first take on that onboarding — describe the agent you want in plain conversation, and the system sets it up for you.",
     category: "Voice AI · OneInbox Onboarding",
     tags: ["Conversational UI", "Onboarding", "Agent Setup", "OneInbox"],
-    image: "/screenshots/raj-ai-home.png",
+    image: "/screenshots/onboarding-chat.png",
     images: [
-      "/screenshots/raj-ai-home.png",
-      "/screenshots/raj-ai-agent.png",
-      "/screenshots/raj-ai-crm.png",
+      "/screenshots/onboarding-chat.png",
+      "/screenshots/onboarding-agent.png",
+      "/screenshots/onboarding-review.png",
     ],
     overview:
       "On OneInbox, the very first thing a new client has to do is set up their voice agent — and that first step was also the hardest. The setup screen asked for configuration the client didn't yet understand, right at the activation moment that decides whether they stick. I built a chat-first approach to that onboarding: instead of filling out forms, the client describes what they want their agent to do in plain conversation, and the system turns that into a set-up, editable agent. (This flow handles getting the agent created; the prompt-training and roleplay-tuning live in a separate tool.)",
@@ -128,7 +128,11 @@ export const projects: Project[] = [
       "OneInbox clients kept getting stuck on the same thing: how should the agent's prompt be structured this time? So I borrowed the mental model every call center already knows — you don't hand a new rep a config file, you tell them how to handle calls and you roleplay. I built a tool that trains an AI agent the same way.",
     category: "Voice AI · Internal Tooling",
     tags: ["Voice AI", "OpenAI GPT-4", "Onboarding", "Prompt Engineering", "OneInbox"],
-    image: "/screenshots/retell-voice.png",
+    image: "/screenshots/voice-trainer-interview.png",
+    images: [
+      "/screenshots/voice-trainer-interview.png",
+      "/screenshots/voice-trainer-roleplay.png",
+    ],
     overview:
       "At OneInbox, every new client agent started with the same blocker: clients knew exactly how they wanted their agent to behave, but not how to turn that into a structured system prompt — and the right structure changed for every use case. Instead of teaching clients to write prompts, I reframed the whole thing around a model they already understood: training a call-center employee. You explain how to handle the call, then you roleplay. This tool does exactly that — interview the client about how the agent should behave, generate the prompt for them, then roleplay-test the agent live before it ever talks to a real customer.",
     role: "Product Manager · Builder",
@@ -171,7 +175,7 @@ export const projects: Project[] = [
       "OneInbox clients upload lead lists to run outbound voice campaigns — but the phone numbers come in every format imaginable, and a dialer can't call a number it can't parse. I introduced the feature that cleans every uploaded list into dial-ready numbers, so campaigns stop failing silently on data nobody checked.",
     category: "Voice AI · OneInbox Feature",
     tags: ["Voice Campaigns", "Lead Data", "E.164", "OneInbox", "Data Quality"],
-    image: "/screenshots/manus-ai.png",
+    image: "/screenshots/dial-ready.png",
     overview:
       "On OneInbox, running an outbound voice campaign starts with one step: upload your leads. The problem is what nobody checks — whether the phone numbers in that file are actually callable. Numbers arrive with missing country codes, hyphens, brackets, local formats. The dialer needs clean E.164 to connect. I introduced Dial-Ready to sit in that gap: it takes the raw lead file a client uploads and returns one where every number the system can trust is formatted to dial — and every number it can't is flagged, not guessed.",
     role: "Product Manager · Builder",

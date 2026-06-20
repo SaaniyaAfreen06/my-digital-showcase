@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import Seo from "@/components/Seo";
 import {
   GraduationCap,
   LayoutDashboard,
@@ -106,6 +107,11 @@ const skills = [
 
 const About = () => (
   <section className="max-w-6xl mx-auto px-6 py-20">
+    <Seo
+      title="About"
+      path="/about"
+      description="Associate PM with an engineering background — voice AI at OneInbox (Techstars '25), a 0→1 MVP to 300+ users, and AI-powered workflows for regulatory and operational problems."
+    />
     {/* Header */}
     <motion.div
       initial={{ opacity: 0, y: 15 }}

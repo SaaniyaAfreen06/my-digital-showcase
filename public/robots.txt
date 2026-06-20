@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://saaniya-s-projects1.vercel.app/sitemap.xml

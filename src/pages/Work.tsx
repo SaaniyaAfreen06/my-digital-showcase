@@ -3,11 +3,17 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 import { projects, caseStudies } from "@/data/projects";
 import { useState } from "react";
 
 const WorkIndex = () => (
   <section className="max-w-6xl mx-auto px-6 py-20">
+    <Seo
+      title="Work"
+      path="/work"
+      description="Product projects and case studies by Saaniya Afreen — voice AI onboarding, banking FATCA/CRS compliance, lead-data cleanup, a 0→1 fundraising SaaS, and product teardowns."
+    />
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
@@ -193,6 +199,12 @@ const ProjectDetail = () => {
 
   return (
     <section className="max-w-3xl mx-auto px-6 py-20">
+      <Seo
+        title={project.title}
+        path={`/work/${project.id}`}
+        description={project.description}
+        image={project.image}
+      />
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}

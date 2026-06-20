@@ -1,9 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin } from "lucide-react";
+import Seo from "@/components/Seo";
 
 const Contact = () => (
   <section className="max-w-6xl mx-auto px-6 flex items-center justify-center min-h-[70vh]">
+    <Seo
+      title="Contact"
+      path="/contact"
+      description="Get in touch with Saaniya Afreen — open to product management roles at ambitious teams building AI, developer tools, and 0→1 products."
+    />
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}

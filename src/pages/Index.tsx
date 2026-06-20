@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Seo from "@/components/Seo";
 import { projects } from "@/data/projects";
 
 const stats = [
@@ -15,6 +16,10 @@ const stats = [
 const Index = () => {
   return (
     <>
+      <Seo
+        path="/"
+        description="Saaniya Afreen — Associate Product Manager building AI-native products. Voice AI, 0→1 builds, and product case studies in fintech, onboarding, and lead data."
+      />
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
         <div className="grid md:grid-cols-2 gap-12 items-center">
