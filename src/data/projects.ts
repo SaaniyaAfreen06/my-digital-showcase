@@ -283,6 +283,12 @@ export const caseStudies: Project[] = [
     category: "Case Study · AI Tools",
     tags: ["Case Study", "AI Tools", "Competitive Analysis", "Strategy"],
     image: "/screenshots/granola-teardown.png",
+    images: [
+      "/screenshots/granola-teardown.png",
+      "/screenshots/granola-app.png",
+      "/screenshots/fireflies-app.jpg",
+      "/screenshots/otter-app.png",
+    ],
     overview:
       "Granola competes with Fireflies, Otter, and Fathom — rivals with more features and bigger teams. It's winning anyway: 250% revenue growth in a quarter, ~10% weekly user growth, and a jump from a $250M valuation (May 2025) to $1.5B (Mar 2026). I tore it down to find why — the architecture call, the UX philosophy, the moat, and where it still falls short.",
     tldr: [
@@ -332,6 +338,13 @@ export const caseStudies: Project[] = [
     category: "Case Study · Quick Commerce",
     tags: ["Quick Commerce", "Unit Economics", "Competitive Analysis", "GTM"],
     image: "/screenshots/snacc-teardown.png",
+    images: [
+      "/screenshots/snacc-teardown.png",
+      "/screenshots/snacc-app-1.jpg",
+      "/screenshots/snacc-app-2.jpg",
+      "/screenshots/zepto-cafe-1.jpg",
+      "/screenshots/zepto-cafe-2.jpg",
+    ],
     overview:
       "Snacc had the better product — curated menu, purpose-built UX, and PMF signals Swiggy's own shutdown note called 'emerging.' It still died ~13 months in. Zepto Café, slower and clunkier, crossed 100,000 orders a day. This teardown is about the gap between a product users love and a business that survives — and why, in quick commerce, infrastructure beats UX.",
     tldr: [

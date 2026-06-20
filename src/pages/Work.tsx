@@ -132,7 +132,7 @@ const ProjectGallery = ({ project }: { project: NonNullable<(typeof projects[0] 
         <img
           src={imgs[active]}
           alt={project!.title}
-          className="w-full h-full object-cover object-top transition-opacity duration-300"
+          className="w-full h-full object-contain transition-opacity duration-300"
         />
         {imgs.length > 1 && (
           <>
