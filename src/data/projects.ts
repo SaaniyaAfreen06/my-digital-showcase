@@ -25,54 +25,6 @@ export interface Project extends ProjectBase {
 // Projects — shorter entries (3-column grid)
 export const projects: Project[] = [
   {
-    id: "raj-ai-studio",
-    title: "Raj — Can You Build an AI Agent Just by Talking to One?",
-    description:
-      "Every platform that lets you build an AI agent makes you configure it first — forms, settings, technical decisions before you understand what you're building. Raj is my prototype exploring the opposite: describe the agent you want in plain conversation, and let the system translate it into structure.",
-    category: "AI Product · 0→1 Exploration",
-    tags: ["Conversational UI", "Voice AI", "Agent Creation", "Prototype"],
-    image: "/screenshots/raj-ai-home.png",
-    images: [
-      "/screenshots/raj-ai-home.png",
-      "/screenshots/raj-ai-agent.png",
-      "/screenshots/raj-ai-crm.png",
-    ],
-    overview:
-      "Raj is a prototype I built to explore one question: what if creating a voice agent felt like talking to one? Instead of navigating forms and configuration fields, the user simply describes what they want — and the system translates that conversation into a structured, editable agent configuration. It's an early exploration of conversation as the primary interface for building AI, not just using it.",
-    role: "Product Manager · Builder",
-    duration: "2025",
-    tools: ["React", "TypeScript", "Conversational UI", "LLM Prompting"],
-    sections: [
-      {
-        heading: "The workflow before",
-        body: "To create an agent on most voice-AI platforms, you fill out configuration: agent purpose, conversation flow, behavior rules, integrations. You're asked to make technical decisions and understand the system's vocabulary before you've even seen what it can do. The interface expects the human to adapt to the system.",
-      },
-      {
-        heading: "The friction that actually hurt",
-        body: "All of this lands at the worst possible moment — activation, the first time a user tries to get value. A wall of config fields is intimidating, the mental model of 'building an AI agent' feels technical, and users don't even know what capabilities exist to configure. Many simply don't get through it. The hardest part of the product is the very first step.",
-      },
-      {
-        heading: "The bet",
-        body: "What if you described your agent the way you'd explain it to a person? Raj asks conversational prompts — 'What should your agent help people with? Who will talk to it? What tone should it have?' — and translates the answers into a structured configuration. No forms. The user expresses intent; the system handles the structure.",
-      },
-      {
-        heading: "What I built",
-        body: "A working prototype of the chat-first onboarding flow: guided conversational setup, 'magic prompts' that suggest what to say when a user is stuck, dynamically generated configurations from their answers, and full editability so the user is never locked out of what the system inferred.",
-      },
-      {
-        heading: "The product thinking",
-        body: "The guiding principle was progressive disclosure — the conversation reveals capabilities gradually instead of dumping them upfront, so complexity arrives only when the user is ready for it. Every generated configuration stays transparent and editable, so the system assists without becoming a black box. Raj is an honest exploration of a real question, not a finished product: can conversation become the primary interface for building AI systems?",
-      },
-    ],
-    outcomes: [
-      "Reframed agent creation from 'fill out a configuration' to 'describe what you want'",
-      "Built a working chat-first prototype: guided prompts, magic suggestions, editable configs",
-      "Applied progressive disclosure so complexity surfaces only as the user is ready for it",
-      "Kept every AI-generated configuration transparent and editable — assistance, not a black box",
-      "Explores a forward-looking thesis: conversation as the primary interface for building AI",
-    ],
-  },
-  {
     id: "cs-fatca-crs-voice-ai",
     title: "KYC on a Phone Call — A Banking Compliance POC",
     description:
