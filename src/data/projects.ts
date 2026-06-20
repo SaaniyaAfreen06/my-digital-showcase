@@ -205,11 +205,11 @@ export const projects: Project[] = [
   },
   {
     id: "cs-predict-growth-mvp",
-    title: "Predict Growth — 0→1 to 300+ Users",
+    title: "Predict Growth — Building the Operating System for Early Founders",
     description:
-      "Led product strategy, cross-functional execution, and go-to-market for an AI-powered growth analytics platform — from blank canvas to 300+ users at launch and growing.",
-    category: "0→1 Product · Growth Analytics",
-    tags: ["0→1 Build", "GTM", "AI Integration", "Growth Strategy"],
+      "Early-stage founders raise on a deck, a model, and a story — and today they cobble those together from scattered tools and expensive consultants. I led the 0→1 build of a single platform meant to replace all of it. The real work wasn't shipping V1; it was reading the market's signal honestly and rebuilding V2 around what founders actually wanted.",
+    category: "0→1 Product · Fundraising SaaS",
+    tags: ["0→1 Build", "Product Strategy", "Repositioning", "AI", "Fundraising"],
     image: "/screenshots/pg-1.png",
     images: [
       "/screenshots/pg-1.png",
@@ -227,17 +227,39 @@ export const projects: Project[] = [
       "/screenshots/pg-13.png",
     ],
     overview:
-      "Predict Growth is an AI-powered analytics platform for founders and growth teams. I joined as Associate PM and owned the product end-to-end: market research, competitive positioning, MVP spec, cross-functional execution with a 6-person team, AI model integration, and go-to-market. We launched to 300+ users and validated product-market fit.",
-    role: "Associate Product Manager",
-    duration: "Jun 2023 – Oct 2025",
-    tools: ["Figma", "Jira", "Mixpanel", "Google Analytics", "Notion", "Python/AI Models"],
-    sections: [],
+      "Predict Growth is a tech stack for early-stage founders — from idea stage through pre-Series A. The thesis: a founder shouldn't need to pay consultants and stitch together a dozen tools just to build a pitch deck, a business model, and a fundraising story. I led the product from a blank canvas through V1, into the market, and through a full repositioning into V2. The most valuable thing I produced wasn't a feature — it was a clear, evidence-backed answer to what should be a product and what should stay a service.",
+    role: "Product Manager",
+    duration: "Jun 2023 – 2025",
+    tools: ["Figma", "OpenAI", "Notion", "Product Discovery", "Founder Research", "GTM"],
+    sections: [
+      {
+        heading: "The workflow before",
+        body: "A founder raising money needs four things: a pitch deck, a business model, financial projections, and a data room. Today each one lives in a different place — a Canva template here, a consultant there, an agency for the narrative, a spreadsheet for the model. It's expensive, fragmented, and the deck keeps changing as the story evolves. Worst of all, none of it helps a founder actually think — it just formats what they already (often wrongly) believe.",
+      },
+      {
+        heading: "The bet behind V1",
+        body: "We didn't want to be 'a tool that builds a deck' — anyone can do that in Canva. The bet was to embed thinking models into every step: when a founder enters their problem and solution, the product helps them assess validity and feasibility, surface how the industry actually solves it, build a bottoms-up market size, an ICP, a PMF scorecard, GTM funnels — across 20+ industry templates, powered by pre-engineered AI prompts. The deck and model would fall out as a byproduct of better thinking. We shipped this and put it in front of 250–300 founders.",
+      },
+      {
+        heading: "The signal I had to be honest about",
+        body: "V1 had everything — and still wasn't working. Founders weren't coming for thinking models; they were coming for an outcome. They typed in a problem and asked, 'how do I get my deck?' We had built the richest part of the journey and buried the thing people actually wanted. Positioning compounded the miss: marketed as a 'business planning tool,' founders expected financial projections we'd deliberately scoped out, and the word 'planning' set the wrong expectation entirely. The product wasn't the problem. The journey, the positioning, and the order of value were.",
+      },
+      {
+        heading: "Learning what NOT to productize",
+        body: "The sharpest output of that year was negative space. The extensive 5-year financial model failed because it needed founders to already have digitized books — a 'step zero' that doesn't exist for early founders; the real need was a simple Q&A that spits out a usable P&L. Custom pitch decks stayed a service, not a feature, because founders came for narrative and storytelling — judgment a template can't replace. The data room we built was never even pulled by a single user. Knowing what to kill, what to keep as a service, and what to never build is as valuable as knowing what to ship.",
+      },
+      {
+        heading: "The redesign: V2, outcome-first",
+        body: "V2 inverts the journey. A founder lands on 'what problem are you solving?', enters three problems and solutions, and a clean pre-seed deck (all 12 mandatory slides) forms as they go. The thinking models are still there — but optional, surfaced only when a founder chooses to go deeper, never forced. Financials moved into a lightweight Q&A agent that asks ~12–16 questions and returns a usable P&L, no spreadsheet literacy required. Same depth, radically simpler path to the outcome people actually came for.",
+      },
+    ],
     outcomes: [
-      "300+ users at MVP launch — validated product-market fit",
-      "Led cross-functional team of 6 through full 0→1 product lifecycle",
-      "Cut reporting dashboard from v1 to protect timeline — right call in retrospect",
-      "AI integration went from 'interesting output' to 'actionable recommendations' over 8 weeks",
-      "Owned GTM end-to-end: positioning, pricing, sequencing, and community launch",
+      "Led a fundraising-SaaS product 0→1: V1 build, market launch to 250–300 founders, and a full V2 repositioning",
+      "Diagnosed why V1 stalled — outcome buried behind process, and 'business planning' positioning set wrong expectations",
+      "Produced a clear product/service boundary: killed the heavy financial model and data room, kept custom decks as a service",
+      "Rebuilt V2 outcome-first — deck forms as you type, thinking models optional, financials via a simple Q&A agent",
+      "Selected for IIM-Bangalore NSRCEL incubation; Pitch Perfect partner with Razorpay Rise (100–200 founder template downloads/month)",
+      "Networked 100–200 early founders and ran on Microsoft for Startups, AWS, and MongoDB startup credits",
     ],
   },
 ];
