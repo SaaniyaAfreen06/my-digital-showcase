@@ -320,7 +320,7 @@ export const caseStudies: Project[] = [
       "Swiggy built Snacc in under 16 days. Zepto Café had been refining its kitchens since 2022. Same craving, same customer — one shut down ~13 months after launch. A teardown of why the better product lost.",
     category: "Product Teardown · Quick Commerce",
     tags: ["Quick Commerce", "Unit Economics", "Competitive Analysis", "GTM"],
-    image: "/screenshots/granola-teardown.png",
+    image: "/screenshots/snacc-teardown.png",
     overview:
       "Snacc had the better product — curated menu, purpose-built UX, and PMF signals Swiggy's own shutdown note called 'emerging.' It still died ~13 months in. Zepto Café, slower and clunkier, crossed 100,000 orders a day. This teardown is about the gap between a product users love and a business that survives — and why, in quick commerce, infrastructure beats UX.",
     tldr: [
