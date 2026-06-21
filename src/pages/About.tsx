@@ -119,8 +119,12 @@ const About = () => (
       transition={{ duration: 0.4 }}
       className="flex flex-col md:flex-row gap-10 items-start mb-20"
     >
-      <div className="w-40 h-40 rounded-2xl bg-muted flex-shrink-0 overflow-hidden flex items-center justify-center">
-        <span className="text-4xl font-display font-bold text-primary/20">SA</span>
+      <div className="w-40 h-48 rounded-2xl bg-muted flex-shrink-0 overflow-hidden shadow-sm">
+        <img
+          src="/screenshots/hero-photo-1.jpg"
+          alt="Saaniya Afreen"
+          className="w-full h-full object-cover object-center"
+        />
       </div>
       <div>
         <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-2">
