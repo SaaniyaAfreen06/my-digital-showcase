@@ -22,11 +22,12 @@ const Index = () => {
       />
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-10 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="max-w-xl"
           >
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-5">
               Associate Product Manager · Voice AI · 0→1 Builder
@@ -59,9 +60,9 @@ const Index = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex justify-center md:justify-end"
+            className="flex justify-center md:flex-shrink-0"
           >
-            <div className="w-64 md:w-72 aspect-[4/5] rounded-2xl bg-muted overflow-hidden shadow-sm">
+            <div className="w-72 md:w-80 aspect-[4/5] rounded-2xl bg-muted overflow-hidden shadow-sm">
               <img
                 src="/screenshots/hero-photo-1.jpg"
                 alt="Saaniya Afreen"
