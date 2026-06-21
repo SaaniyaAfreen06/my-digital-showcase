@@ -63,7 +63,7 @@ const Index = () => {
           >
             <div className="w-64 md:w-72 aspect-[4/5] rounded-2xl bg-muted overflow-hidden shadow-sm">
               <img
-                src="/screenshots/hero-photo-1.jpg"
+                src="/screenshots/hero-photo-2.jpg"
                 alt="Saaniya Afreen"
                 className="w-full h-full object-cover object-center"
               />
