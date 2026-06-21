@@ -12,6 +12,12 @@ interface EventMedia {
   caption?: string;
 }
 
+interface EventSection {
+  heading: string;
+  body: string;
+  media?: EventMedia[];
+}
+
 interface EventItem {
   id: string;
   title: string;
@@ -23,8 +29,8 @@ interface EventItem {
   stats: { label: string; value: string }[];
   description: string;
   overview: string;
+  sections: EventSection[];
   highlights: string[];
-  media?: EventMedia[];
 }
 
 export const events: EventItem[] = [
@@ -44,12 +50,29 @@ export const events: EventItem[] = [
     description:
       "Co-hosted a Voice AI ecosystem meetup under OneAI Community (run by OneInbox) — founders, builders, and operators in one room to talk about where conversational AI is actually heading.",
     overview:
-      "One of two events I helped host as part of OneAI Community, OneInbox's community for the Voice AI ecosystem. This one brought together founders, builders, and product leaders in Bangalore to talk about the future of conversational interfaces and voice-driven products — the kind of conversation that doesn't happen on a Twitter thread.",
+      "This was the first of two events I helped host as part of OneAI Community — the community OneInbox runs for the Voice AI ecosystem. The whole point was to get founders, builders, and operators into one physical room in Bangalore, because the most useful conversations about voice AI simply don't happen on a Twitter thread.",
+    sections: [
+      {
+        heading: "Why this meetup existed",
+        body: "Voice AI was moving fast, and everyone was learning in their own silo — one team solving latency, another fighting telephony, a third tuning prompts, none of them comparing notes. OneAI Community was our answer to that: a recurring, in-person home for the Voice AI ecosystem, run by OneInbox. This first edition was about proving there was real appetite for it — a room where people swap what's actually working instead of what's being announced.",
+      },
+      {
+        heading: "What I owned",
+        body: "I shaped the theme and the panel format, decided who belonged on stage, drove the outreach that filled the room, and ran the attendee experience on the day. We had 300+ registrations and around 150 people show up — a strong turnout for a niche, technical community, and proof that there's a hungry audience for this kind of gathering in Bangalore.",
+        media: [
+          { src: "/screenshots/oneai-meetup-1.jpg", caption: "The room at the end of the night — founders, builders, and operators from across the Voice AI stack." },
+        ],
+      },
+      {
+        heading: "What actually happened in the room",
+        body: "The panel went deep on the unglamorous parts — real-world use cases, infrastructure, and agent orchestration — the things people rarely post about but always struggle with. The networking afterward was the real product: founders building voice agents met the operators running them at scale, and a couple of collaborations started right there on the floor.",
+      },
+    ],
     highlights: [
       "Shaped the theme and format for a panel with Voice AI builders and operators",
+      "Drove outreach to 300+ registrations and a 150-strong turnout",
       "Curated topics around real-world use cases, infrastructure, and agent orchestration",
-      "Drove outreach and managed the attendee experience end to end",
-      "Sparked conversations across the stack — from founders building in the space to teams running it at scale",
+      "Turned a one-off into the start of a recurring community",
     ],
   },
   {
@@ -68,11 +91,28 @@ export const events: EventItem[] = [
     description:
       "The second OneAI Community gathering — a smaller, hands-on session for the Voice AI crowd to swap what's actually working in production.",
     overview:
-      "The second of the two OneAI Community events (OneInbox's Voice AI community). A more intimate, builder-first room — fewer slides, more real talk about what teams are shipping, where the hard problems are, and what's overhyped. The kind of session where people compare notes instead of pitching.",
+      "The second of the two OneAI Community events I co-hosted (OneInbox's Voice AI community). After the first meetup proved the appetite, we deliberately ran this one smaller and more intimate — a builder-first room where the conversation could get specific instead of staying at keynote altitude.",
+    sections: [
+      {
+        heading: "The second edition, on purpose smaller",
+        body: "The first meetup proved there was demand; this one was about depth. We kept the guest list tighter so the room could actually talk to each other — fewer chairs, more candour, and the kind of questions people only ask when they trust who's listening.",
+        media: [
+          { src: "/screenshots/oneai-meetup-2.jpg", caption: "A tighter, builder-first room — the second OneAI Community session." },
+        ],
+      },
+      {
+        heading: "Format: production over pitches",
+        body: "No launch announcements, no demos-as-marketing. We kept it to what's genuinely working in production — latency, reliability, where things break, and what's overhyped versus what actually moves the needle. The value was in the honesty, not the polish.",
+      },
+      {
+        heading: "Why it matters",
+        body: "Running a second edition is what turns an event into a community. Two gatherings meant the same faces started showing up, recognising each other, and trading help — and that repetition is exactly how a real ecosystem forms around a category.",
+      },
+    ],
     highlights: [
       "Co-hosted and curated a focused, builder-first format",
       "Kept it practical — production lessons over launch announcements",
-      "Grew the OneAI Community as a recurring home for Voice AI builders in Bangalore",
+      "Made OneAI Community a recurring home for Voice AI builders in Bangalore",
       "Connected founders and operators who'd only ever met online",
     ],
   },
@@ -92,15 +132,29 @@ export const events: EventItem[] = [
     description:
       "Represented Predict Growth as the Investment Readiness Partner at SaaS.Connect 2025 — ran the stall and joined the Demo Day panel to help Tamil Nadu's founders get investor-ready.",
     overview:
-      "Predict Growth was the Investment Readiness Partner at SaaS.Connect 2025 in Coimbatore, in partnership with Start Insights to back Tamil Nadu's founders. I manned the Predict Growth stall — the 'Pitch for Cash' setup — and joined the Demo Day panel to help early-stage founders sharpen the part of fundraising they usually get wrong: being ready before they walk into the room.",
+      "Predict Growth was the Investment Readiness Partner at SaaS.Connect 2025 in Coimbatore, in partnership with Start Insights to back Tamil Nadu's founders. I ran the Predict Growth stall and joined the Demo Day panel — both aimed at the same thing: helping early-stage founders fix the part of fundraising they usually overlook, which is being ready before they ever walk into the room.",
+    sections: [
+      {
+        heading: "The partnership",
+        body: "Predict Growth came on as the official Investment Readiness Partner for SaaS.Connect 2025, alongside Start Insights, to support the Tamil Nadu startup ecosystem. The brief wasn't to help founders make a prettier deck — it was to get more of them genuinely investor-ready, which is a very different (and much harder) bar.",
+        media: [
+          { src: "/screenshots/saas-connect-partners.png", caption: "Predict Growth featured among the SaaS.Connect partners as the Investment Readiness Partner." },
+        ],
+      },
+      {
+        heading: "At the stall",
+        body: "I ran the Predict Growth stall — the 'Pitch for Cash' setup — and spent the day in back-to-back conversations with early-stage founders. The pattern was clear: most had a deck, very few had the underlying readiness investors actually screen for. That gap, between 'I have a pitch' and 'I'm ready to be funded', is exactly what Predict Growth exists to close.",
+      },
+      {
+        heading: "On the Demo Day panel",
+        body: "I joined the Demo Day panel to give founders direct, specific feedback on investment readiness and pitch structure — what's missing, what's hand-wavy, and what a real investor would push back on. Less 'great job', more 'here's the question that's going to sink you in the room, and how to answer it'.",
+      },
+    ],
     highlights: [
       "Hosted the Predict Growth stall and engaged early-stage founders directly",
       "Joined the Demo Day panel, giving feedback on investment readiness and pitch structure",
       "Partnered with Start Insights to support the Tamil Nadu startup ecosystem",
       "Carried Predict Growth's mission into the room: take founders from idea to investor-ready",
-    ],
-    media: [
-      { src: "/screenshots/saas-connect-partners.png", caption: "Predict Growth featured among the SaaS.Connect partners as the Investment Readiness Partner." },
     ],
   },
   {
@@ -119,11 +173,28 @@ export const events: EventItem[] = [
     description:
       "Hosted a Women's Day founders' event for Predict Growth — founders in the audience, a panel of investors and operators unpacking fundraising and investment.",
     overview:
-      "A Women's Day event I hosted for Predict Growth, built for founders. We filled the room with early-stage founders as the audience and put a panel on stage to dig into the things that actually move a raise — investment readiness, what investors look for, and how to tell a fundable story. I hosted from the mic, keeping the conversation moving between panelists and the founders in the room.",
+      "A Women's Day event I hosted for Predict Growth — but built for founders, not just for the occasion. We filled the room with early-stage founders as the audience and put a panel on stage to dig into the thing that actually decides a raise: being investment-ready. I hosted from the mic, keeping the conversation moving between the panel and the founders in the room.",
+    sections: [
+      {
+        heading: "The idea",
+        body: "It would have been easy to make this a feel-good Women's Day mixer. We made it useful instead. The whole event was designed around founders — bring them in as the audience, and give them a stage full of people who could answer the questions that keep early founders up at night about money and investors.",
+        media: [
+          { src: "/screenshots/womens-day-mic.jpg", caption: "Hosting from the mic — keeping the conversation moving between the panel and the founders in the room." },
+        ],
+      },
+      {
+        heading: "The panel",
+        body: "We curated a panel of investors and operators to go deep on fundraising — what investors actually look for, how to tell a story that's fundable, and the quiet mistakes that kill a round before it starts. The goal was for every founder to leave with a clearer picture of what 'ready' really means.",
+      },
+      {
+        heading: "Hosting it",
+        body: "I ran the event from the front — the run of show, the introductions, and the mic on the day. My job was to keep it moving and keep it honest: drawing out concrete answers from the panel and pulling real questions from the founders, so people walked out with things they could act on the next week, not just notes.",
+      },
+    ],
     highlights: [
-      "Hosted the event end to end — from the run of show to working the mic on the day",
+      "Hosted the event end to end — from run of show to working the mic on the day",
       "Curated a panel of investors and operators around investment and fundraising",
-      "Programmed it for founders: a founder audience, with takeaways they could use the next week",
+      "Programmed it for founders: a founder audience with takeaways they could use immediately",
       "Tied it back to Predict Growth's mission of getting founders investor-ready",
     ],
   },
@@ -178,33 +249,33 @@ export const EventsIndex = () => (
               to={`/events/${event.id}`}
               className="group block h-full rounded-xl border border-border overflow-hidden bg-card hover:shadow-md transition-all"
             >
-              <div className="aspect-[16/10] bg-muted overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur text-[11px] font-semibold text-primary">
+                  <Icon size={12} /> {event.type}
+                </span>
+                <h2 className="absolute bottom-3 left-4 right-4 text-white font-display font-bold text-lg leading-snug">
+                  {event.title}
+                </h2>
               </div>
               <div className="p-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="p-1.5 rounded-md bg-primary/10 text-primary flex-shrink-0">
-                    <Icon size={14} />
-                  </span>
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
-                    {event.type}
-                  </p>
-                </div>
-                <h2 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors leading-snug mb-1.5">
-                  {event.title}
-                  <ArrowRight size={14} className="inline ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </h2>
-                <p className="text-xs text-muted-foreground line-clamp-3 leading-relaxed mb-3">
+                <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed mb-3">
                   {event.description}
                 </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {event.tags.slice(0, 3).map((tag) => (
-                    <Badge key={tag} variant="secondary" className="rounded-full text-[11px]">{tag}</Badge>
-                  ))}
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap gap-1.5">
+                    {event.tags.slice(0, 2).map((tag) => (
+                      <Badge key={tag} variant="secondary" className="rounded-full text-[11px]">{tag}</Badge>
+                    ))}
+                  </div>
+                  <span className="text-xs font-medium text-primary inline-flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    View event <ArrowRight size={13} />
+                  </span>
                 </div>
               </div>
             </Link>
@@ -265,21 +336,39 @@ export const EventDetail = () => {
 
         <EventFigure src={event.image} alt={event.title} className="mb-12" />
 
-        <h2 className="text-xl font-display font-bold text-foreground mb-4">Highlights</h2>
-        <ul className="space-y-3 mb-10">
-          {event.highlights.map((h, i) => (
-            <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
-              <CheckCircle2 size={16} className="text-primary flex-shrink-0 mt-0.5" />
-              {h}
-            </li>
+        {/* Detailed sections — blog style */}
+        <div className="space-y-10">
+          {event.sections.map((section, i) => (
+            <Fragment key={i}>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+              >
+                <h2 className="text-xl font-display font-bold text-foreground mb-3">{section.heading}</h2>
+                <p className="text-muted-foreground leading-relaxed">{section.body}</p>
+              </motion.div>
+              {section.media?.map((m, mi) => (
+                <EventFigure key={mi} src={m.src} alt={m.caption ?? section.heading} caption={m.caption} className="mt-6" />
+              ))}
+            </Fragment>
           ))}
-        </ul>
+        </div>
 
-        {event.media?.map((m, i) => (
-          <EventFigure key={i} src={m.src} alt={m.caption ?? event.title} caption={m.caption} className="mb-10" />
-        ))}
+        <div className="mt-12 border border-border rounded-lg p-6 bg-muted/30">
+          <h2 className="text-lg font-display font-bold text-foreground mb-4">Highlights</h2>
+          <ul className="space-y-3">
+            {event.highlights.map((h, i) => (
+              <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
+                <CheckCircle2 size={16} className="text-primary flex-shrink-0 mt-0.5" />
+                {h}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        <div className="mt-4 pt-10 border-t border-border">
+        <div className="mt-14 pt-10 border-t border-border">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">More events</p>
           <div className="grid sm:grid-cols-2 gap-4">
             {events.filter((e) => e.id !== event.id).slice(0, 4).map((e) => (
