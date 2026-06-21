@@ -16,6 +16,8 @@ export interface ProjectBase {
   category: string;
   tags: string[];
   image: string;
+  /** Branded poster used on the Work grid cards (falls back to `image`). */
+  thumbnail?: string;
   images?: string[];
 }
 
@@ -39,6 +41,7 @@ export const projects: Project[] = [
     category: "Voice AI · OneInbox Onboarding",
     tags: ["Conversational UI", "Onboarding", "Agent Setup", "OneInbox"],
     image: "/screenshots/onboarding-chat.png",
+    thumbnail: "/screenshots/thumb-onboarding.png",
     images: [
       "/screenshots/onboarding-chat.png",
       "/screenshots/onboarding-agent.png",
@@ -93,6 +96,7 @@ export const projects: Project[] = [
     category: "Fintech · Banking · Voice AI",
     tags: ["Banking", "FATCA/CRS", "KYC", "Voice AI", "Compliance"],
     image: "/screenshots/fatca-dashboard.png",
+    thumbnail: "/screenshots/thumb-fatca.png",
     images: [
       "/screenshots/fatca-dashboard.png",
       "/screenshots/fatca-customers.png",
@@ -151,6 +155,7 @@ export const projects: Project[] = [
     category: "Voice AI · Internal Tooling",
     tags: ["Voice AI", "OpenAI GPT-4", "Onboarding", "Prompt Engineering", "OneInbox"],
     image: "/screenshots/voice-trainer-interview.png",
+    thumbnail: "/screenshots/thumb-voice-trainer.png",
     images: [
       "/screenshots/voice-trainer-interview.png",
       "/screenshots/voice-trainer-roleplay.png",
@@ -200,7 +205,8 @@ export const projects: Project[] = [
       "OneInbox clients upload lead lists to run outbound voice campaigns — but the phone numbers come in every format imaginable, and a dialer can't call a number it can't parse. I introduced the feature that cleans every uploaded list into dial-ready numbers, so campaigns stop failing silently on data nobody checked.",
     category: "Voice AI · OneInbox Feature",
     tags: ["Voice Campaigns", "Lead Data", "E.164", "OneInbox", "Data Quality"],
-    image: "/screenshots/dial-ready.png",
+    image: "/screenshots/dial-ready-1.png",
+    thumbnail: "/screenshots/thumb-dial-ready.png",
     overview:
       "On OneInbox, running an outbound voice campaign starts with one step: upload your leads. The problem is what nobody checks — whether the phone numbers in that file are actually callable. Numbers arrive with missing country codes, hyphens, brackets, local formats. The dialer needs clean E.164 to connect. I introduced Dial-Ready to sit in that gap: it takes the raw lead file a client uploads and returns one where every number the system can trust is formatted to dial — and every number it can't is flagged, not guessed.",
     role: "Product Manager · Builder",
@@ -218,6 +224,10 @@ export const projects: Project[] = [
       {
         heading: "The redesign",
         body: "The whole tool is a chat — you drop your lead file in like you would in ChatGPT, and Dial-Ready replies with what it found. It detects the phone column on its own, tests every value against country codes for 200+ countries, and sorts the list three ways: numbers it's sure about land in 'dial-ready' with an Approve button; numbers missing a country code arrive with a one-tap suggestion ('Add +91 to 140 India numbers') that auto-applies the moment you click it; anything genuinely broken you fix with inline editing, right there in the thread. Approved numbers collect in one place to download as a clean, dial-ready CSV — and every other column in the file is preserved untouched.",
+        media: [
+          { src: "/screenshots/dial-ready-2.png", caption: "Bulk fixes are one tap — 'Add +91 to 140 India numbers' applies instantly and moves them to Approved." },
+          { src: "/screenshots/dial-ready-3.png", caption: "The Approved set collects in one place — clean E.164, ready to download as a CSV." },
+        ],
       },
       {
         heading: "The product call I'm proud of",
@@ -244,6 +254,7 @@ export const projects: Project[] = [
     category: "0→1 Product · Fundraising SaaS",
     tags: ["0→1 Build", "Product Strategy", "Repositioning", "AI", "Fundraising"],
     image: "/screenshots/pg-1.png",
+    thumbnail: "/screenshots/thumb-predict-growth.png",
     images: [
       "/screenshots/pg-1.png",
       "/screenshots/pg-2.png",
@@ -327,6 +338,7 @@ export const caseStudies: Project[] = [
     category: "Case Study · AI Tools",
     tags: ["Case Study", "AI Tools", "Competitive Analysis", "Strategy"],
     image: "/screenshots/granola-teardown.png",
+    thumbnail: "/screenshots/thumb-granola.png",
     images: [
       "/screenshots/granola-teardown.png",
       "/screenshots/granola-app.png",
@@ -389,6 +401,7 @@ export const caseStudies: Project[] = [
     category: "Case Study · Quick Commerce",
     tags: ["Quick Commerce", "Unit Economics", "Competitive Analysis", "GTM"],
     image: "/screenshots/snacc-teardown.png",
+    thumbnail: "/screenshots/thumb-snacc.png",
     images: [
       "/screenshots/snacc-teardown.png",
       "/screenshots/snacc-app-1.jpg",

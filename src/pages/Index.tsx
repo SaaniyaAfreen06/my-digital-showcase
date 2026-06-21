@@ -121,7 +121,7 @@ const Index = () => {
                   className="group block rounded-lg border border-border bg-card overflow-hidden hover:shadow-md transition-all h-full"
                 >
                   <div className="aspect-[4/3] bg-muted overflow-hidden">
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300" />
+                    <img src={project.thumbnail ?? project.image} alt={project.title} className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300" />
                   </div>
                   <div className="p-5">
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-primary mb-2">
