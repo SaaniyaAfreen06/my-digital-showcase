@@ -61,8 +61,12 @@ const Index = () => {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="flex justify-center md:justify-end"
           >
-            <div className="w-64 h-64 md:w-72 md:h-72 rounded-2xl bg-muted overflow-hidden flex items-center justify-center">
-              <span className="text-5xl font-display font-bold text-primary/20">SA</span>
+            <div className="w-64 md:w-72 aspect-[4/5] rounded-2xl bg-muted overflow-hidden shadow-sm">
+              <img
+                src="/screenshots/hero-photo-1.jpg"
+                alt="Saaniya Afreen"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
           </motion.div>
         </div>
